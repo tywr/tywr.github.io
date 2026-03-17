@@ -1,47 +1,24 @@
 {{ define "main" }}
-  {{ with .Site.Params.description }}
-    <div class="home-intro">
-      <p>{{ . }}</p>
-    </div>
-  {{ end }}
+  <div class="landing">
+    <div class="landing-intro">
+      <h1 class="landing-title">
+        {{ with .Site.Params.homeInfoParams.Title }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}
+      </h1>
+      {{ with .Site.Params.homeInfoParams.Content }}
+        <p class="landing-bio">{{ . }}</p>
+      {{ end }}
 
-  <p class="home-posts-heading">Recent posts</p>
+      <div class="landing-actions">
+        <a href="/posts/" class="landing-cta">Read the blog →</a>
+      </div>
 
-  {{ $posts := where .Site.RegularPages "Type" "posts" }}
-  {{ if not $posts }}
-    {{ $posts = .Site.RegularPages }}
-  {{ end }}
-
-  <ul class="post-list">
-    {{ range $posts }}
-      <li class="post-list-item">
-        <div class="post-list-header">
-          <a href="{{ .Permalink }}" class="post-list-title">{{ .Title }}</a>
-        </div>
-        <div class="post-meta">
-          <time datetime="{{ .Date.Format "2006-01-02" }}">
-            {{ .Date.Format ($.Site.Params.DateFormat | default "January 2, 2006") }}
-          </time>
-          {{ if .ReadingTime }}
-            <span class="post-meta-sep">·</span>
-            <span>{{ .ReadingTime }} min read</span>
+      {{ with .Site.Params.socialIcons }}
+        <div class="landing-social">
+          {{ range . }}
+            <a href="{{ .url }}" class="landing-social-link" target="_blank" rel="noopener noreferrer">{{ .name }}</a>
           {{ end }}
         </div>
-        {{ with .Summary }}
-          <p class="post-summary">{{ . | plainify | truncate 200 }}</p>
-        {{ end }}
-        {{ with .Params.tags }}
-          <div class="post-tags">
-            {{ range . }}
-              <a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="tag">{{ . }}</a>
-            {{ end }}
-          </div>
-        {{ end }}
-      </li>
-    {{ else }}
-      <li><p style="color: var(--fg-muted);">No posts yet.</p></li>
-    {{ end }}
-  </ul>
-
-  {{ template "_internal/pagination.html" . }}
+      {{ end }}
+    </div>
+  </div>
 {{ end }}

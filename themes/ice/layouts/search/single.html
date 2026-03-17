@@ -1,0 +1,71 @@
+{{ define "main" }}
+<div class="page-header">
+  <h1 class="page-title">{{ .Title }}</h1>
+</div>
+
+<div class="search-wrapper">
+  <input
+    type="search"
+    id="search-input"
+    class="search-input"
+    placeholder="Search posts..."
+    autocomplete="off"
+    autofocus
+  >
+  <div id="search-results" class="search-results"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7/dist/fuse.min.js"></script>
+<script>
+  (function () {
+    var input = document.getElementById('search-input');
+    var resultsEl = document.getElementById('search-results');
+    var fuse;
+
+    fetch('/index.json')
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        fuse = new Fuse(data, {
+          keys: ['title', 'summary', 'content', 'tags'],
+          threshold: 0.4,
+          includeMatches: true,
+          minMatchCharLength: 2,
+        });
+
+        var q = new URLSearchParams(window.location.search).get('q');
+        if (q) {
+          input.value = q;
+          render(fuse.search(q));
+        }
+      });
+
+    input.addEventListener('input', function () {
+      if (!fuse) return;
+      var q = input.value.trim();
+      history.replaceState(null, '', q ? '?q=' + encodeURIComponent(q) : window.location.pathname);
+      render(q.length >= 2 ? fuse.search(q) : []);
+    });
+
+    function render(results) {
+      if (!results.length) {
+        resultsEl.innerHTML = input.value.trim().length >= 2
+          ? '<p class="search-empty">No results found.</p>'
+          : '';
+        return;
+      }
+      resultsEl.innerHTML = results.map(function (r) {
+        var item = r.item;
+        var tags = (item.tags || []).map(function (t) {
+          return '<a href="/tags/' + t.toLowerCase().replace(/\s+/g, '-') + '/" class="tag">' + t + '</a>';
+        }).join('');
+        return '<div class="post-list-item">'
+          + '<a href="' + item.permalink + '" class="post-list-title">' + item.title + '</a>'
+          + '<div class="post-meta"><time>' + item.date + '</time></div>'
+          + (item.summary ? '<p class="post-summary">' + item.summary + '</p>' : '')
+          + (tags ? '<div class="post-tags">' + tags + '</div>' : '')
+          + '</div>';
+      }).join('');
+    }
+  })();
+</script>
+{{ end }}
