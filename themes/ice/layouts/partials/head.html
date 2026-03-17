@@ -28,6 +28,8 @@
   })();
 </script>
 
+{{- if .Params.math }}{{ partial "katex.html" . }}{{- end }}
+
 {{- $main := resources.Get "css/main.css" | fingerprint }}
 <link rel="stylesheet" href="{{ $main.RelPermalink }}" integrity="{{ $main.Data.Integrity }}">
 {{- $custom := resources.Get "css/custom.css" }}
