@@ -1,55 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-/* =============================================
-   Ice theme — based on ~/.config/colorthemes/base3/ice.yaml
-   background: #0c0e12  foreground: #e5e9f0
-   accent:     #a093c7  main:       #a3e2f5
-   main2:      #96cfe0  main3:      #88c0d0
-   secondary:  #81a1c1  secondary2: #5e81ac
-   ============================================= */
-
-/* Light mode — icy whites and blues */
-:root {
-    --theme: #f0f6fa;              /* near-white with ice tint */
-    --entry: #e0eef5;              /* card background */
-    --primary: #5e81ac;            /* titles — steel blue */
-    --secondary: #81a1c1;          /* secondary text */
-    --content: #1e2a38;            /* body text — deep navy (readable on light bg) */
-    --tertiary: #c8dde9;           /* subtle UI elements */
-    --border: #96cfe0;             /* borders */
-    --code-block-bg: #0c0e12;      /* code block bg (dark) */
-    --code-bg: #d6eaf4;            /* inline code bg */
-}
-
-/* Dark mode — deep night with ice accents */
-:root[data-theme="dark"] {
-    --theme: #0c0e12;              /* background */
-    --entry: #131720;              /* card/entry background */
-    --primary: #a3e2f5;            /* titles — ice blue */
-    --secondary: #81a1c1;          /* secondary text */
-    --content: #e5e9f0;            /* body text — white */
-    --tertiary: #1c2230;           /* subtle UI elements */
-    --border: #243040;             /* borders */
-    --code-block-bg: #090b0f;      /* code block bg */
-    --code-bg: #161b24;            /* inline code bg */
-}
-
-/* Links — light mode */
-:root a {
-    color: #5e81ac;
-}
-:root a:hover {
-    color: #a093c7;
-}
-
-/* Links — dark mode */
-:root[data-theme="dark"] a {
-    color: #a3e2f5;
-}
-:root[data-theme="dark"] a:hover {
-    color: #a093c7;
-}
-
 /* Fonts */
 h1, h2, h3, h4, h5, h6, .post-title, .entry-title, .site-name,
 header, header a, #top-link {
@@ -58,14 +8,4 @@ header, header a, #top-link {
 
 body, p, li, .post-content {
     font-family: 'SN Pro', system-ui, sans-serif;
-}
-
-/* Text selection */
-:root ::selection {
-    background: #88c0d0;
-    color: #0c0e12;
-}
-:root[data-theme="dark"] ::selection {
-    background: #a093c7;
-    color: #e5e9f0;
 }

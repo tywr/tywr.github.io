@@ -1,0 +1,11 @@
+name = "ice"
+license = "MIT"
+licenselink = "https://opensource.org/licenses/MIT"
+description = "A minimal, clean Hugo blog theme with ice blue and lavender accents."
+homepage = "https://github.com/tywr/tywr.github.io"
+tags = ["minimal", "blog", "dark-mode", "responsive"]
+features = ["Dark mode", "RSS", "Syntax highlighting", "Reading time", "Tags"]
+min_version = "0.112.0"
+
+[author]
+  name = "tywr"
