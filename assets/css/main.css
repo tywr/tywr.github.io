@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
 
 /* ============================================================
    CSS VARIABLES — LIGHT MODE (default)
@@ -534,7 +536,7 @@ code {
   font-size: 0.875em;
   padding: 0.15em 0.4em;
   border-radius: 3px;
-  font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Cascadia Code', monospace;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 /* Plotly charts */

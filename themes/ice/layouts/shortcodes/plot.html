@@ -7,8 +7,9 @@
     function render() {
       var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
       var layout = Object.assign({}, spec.layout || {});
-      layout.paper_bgcolor = 'rgba(0,0,0,0)';
-      layout.plot_bgcolor = 'rgba(0,0,0,0)';
+      var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim();
+      layout.paper_bgcolor = bgColor;
+      layout.plot_bgcolor = bgColor;
       layout.font = Object.assign({}, layout.font || {}, {
         color: isDark ? '#d8dee9' : '#1e2a38'
       });
