@@ -379,6 +379,15 @@ main {
 .post-content h3 { font-size: 1.2rem; }
 .post-content h4 { font-size: 1.05rem; }
 
+.post-content h1[id],
+.post-content h2[id],
+.post-content h3[id],
+.post-content h4[id],
+.post-content h5[id],
+.post-content h6[id] {
+  scroll-margin-top: 72px;
+}
+
 .post-content a {
   text-decoration: underline;
   text-decoration-color: var(--border);
@@ -702,6 +711,99 @@ code {
   background: var(--accent);
   border-color: var(--accent);
   color: #fff;
+}
+
+/* ============================================================
+   TABLE OF CONTENTS — sidebar
+============================================================ */
+.toc-sidebar {
+  position: fixed;
+  top: 80px;
+  width: 220px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  z-index: 50;
+}
+
+/* Position the TOC to the right of the content area */
+@media (min-width: 1200px) {
+  .toc-sidebar {
+    /* center of viewport + half of content width + gap */
+    left: calc(50% + 380px + 40px);
+  }
+}
+
+/* Hide on screens too narrow to fit the sidebar */
+@media (max-width: 1199px) {
+  .toc-sidebar {
+    display: none;
+  }
+}
+
+.toc-title {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fg-muted);
+  margin-bottom: 0.75rem;
+}
+
+.toc-nav #TableOfContents {
+  border-left: 2px solid var(--border);
+  padding-left: 0;
+}
+
+.toc-nav #TableOfContents ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.toc-nav #TableOfContents > ul > li {
+  margin-bottom: 0.15rem;
+}
+
+.toc-nav #TableOfContents li {
+  margin-bottom: 0.1rem;
+}
+
+.toc-nav #TableOfContents a {
+  display: block;
+  padding: 0.2rem 0 0.2rem 0.9rem;
+  color: var(--fg-muted);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  margin-left: -2px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+.toc-nav #TableOfContents a:hover {
+  color: var(--title);
+  border-left-color: var(--accent);
+}
+
+.toc-nav #TableOfContents a.active {
+  color: var(--title);
+  border-left-color: var(--accent);
+  font-weight: 500;
+}
+
+/* Nested levels get more indent */
+.toc-nav #TableOfContents ul ul a {
+  padding-left: 1.6rem;
+  font-size: 0.75rem;
+}
+
+.toc-nav #TableOfContents ul ul ul a {
+  padding-left: 2.3rem;
+  font-size: 0.72rem;
 }
 
 /* ============================================================
