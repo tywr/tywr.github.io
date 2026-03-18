@@ -528,6 +528,12 @@ code {
   font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Cascadia Code', monospace;
 }
 
+/* Plotly charts */
+.plotly-chart {
+  width: 100%;
+  margin: 1.5em 0;
+}
+
 /* Hugo chroma syntax highlight — force dark background */
 .highlight {
   margin: 1.5em 0;
