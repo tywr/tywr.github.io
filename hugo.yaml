@@ -3,6 +3,10 @@ languageCode: en-us
 title: Tanguy VIVIER
 theme: ice
 
+caches:
+  images:
+    dir: :cacheDir/images
+
 pagination:
   pagerSize: 10
 
