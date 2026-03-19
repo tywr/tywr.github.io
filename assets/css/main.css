@@ -800,6 +800,7 @@ code {
    RESPONSIVE
 ============================================================ */
 @media (max-width: 600px) {
+  main { padding: 1rem 0.75rem; }
   .post-title { font-size: 1.5rem; }
   .site-header { height: 52px; }
   .post-nav { grid-template-columns: 1fr; }
