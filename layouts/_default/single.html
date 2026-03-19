@@ -1,38 +1,41 @@
 {{ define "main" }}
-  <article>
-    <header class="post-header">
-      <h1 class="post-title">{{ .Title }}</h1>
-      <div class="post-meta">
-        <time datetime="{{ .Date.Format "2006-01-02" }}">
-          {{ .Date.Format (.Site.Params.DateFormat | default "January 2, 2006") }}
-        </time>
-        {{ if .ReadingTime }}
-          <span class="post-meta-sep">·</span>
-          <span>{{ .ReadingTime }} min read</span>
-        {{ end }}
-      </div>
-      {{ with .Params.tags }}
-        <div class="post-tags" style="margin-top: 0.75rem;">
-          {{ range . }}
-            <a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="tag">{{ . }}</a>
-          {{ end }}
-        </div>
-      {{ end }}
-    </header>
-
-    {{ if and (.TableOfContents) (ne .TableOfContents "<nav id=\"TableOfContents\"></nav>") }}
+  <div class="post-layout">
+    {{ if and (not .Params.hidemeta) (.TableOfContents) (ne .TableOfContents "<nav id=\"TableOfContents\"></nav>") }}
       <aside class="toc-sidebar" id="toc-sidebar">
         <nav class="toc-nav">
-          <span class="toc-title">On this page</span>
           {{ .TableOfContents }}
         </nav>
       </aside>
     {{ end }}
 
-    <div class="post-content">
-      {{ .Content }}
-    </div>
-  </article>
+    <article>
+      <header class="post-header">
+        <h1 class="post-title">{{ .Title }}</h1>
+        {{ if not .Params.hidemeta }}
+          <div class="post-meta">
+            <time datetime="{{ .Date.Format "2006-01-02" }}">
+              {{ .Date.Format (.Site.Params.DateFormat | default "January 2, 2006") }}
+            </time>
+            {{ if .ReadingTime }}
+              <span class="post-meta-sep">·</span>
+              <span>{{ .ReadingTime }} min read</span>
+            {{ end }}
+          </div>
+        {{ end }}
+        {{ with .Params.tags }}
+          <div class="post-tags" style="margin-top: 0.75rem;">
+            {{ range . }}
+              <a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="tag">{{ . }}</a>
+            {{ end }}
+          </div>
+        {{ end }}
+      </header>
+
+      <div class="post-content">
+        {{ .Content }}
+      </div>
+    </article>
+  </div>
 
   {{ if or .PrevInSection .NextInSection }}
     <nav class="post-nav" aria-label="Post navigation">
@@ -55,7 +58,7 @@
     </nav>
   {{ end }}
 
-  {{ if and (.TableOfContents) (ne .TableOfContents "<nav id=\"TableOfContents\"></nav>") }}
+  {{ if and (not .Params.hidemeta) (.TableOfContents) (ne .TableOfContents "<nav id=\"TableOfContents\"></nav>") }}
   <script>
     (function() {
       var toc = document.getElementById('toc-sidebar');

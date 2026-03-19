@@ -1,6 +1,6 @@
 baseURL: "https://tywr.github.io"
 languageCode: en-us
-title: Tanguy VIVIER
+title: tywr >
 theme: ice
 
 caches:
@@ -56,7 +56,7 @@ params:
 
   # home-info mode
   homeInfoParams:
-    Title: "Science. Code. Music. Whatever I feel like doing."
+    Title: "I feel like doing."
     Content: |
       A future reference for myself – to gather my thoughts and drop them into the void.
 
@@ -102,6 +102,10 @@ menu:
       name: Tags
       url: /tags/
       weight: 4
+    - identifier: about
+      name: About
+      url: /about/
+      weight: 5
 
 taxonomies:
   tag: tags

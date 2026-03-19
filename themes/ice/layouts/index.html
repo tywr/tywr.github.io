@@ -1,24 +1,34 @@
 {{ define "main" }}
   <div class="landing">
     <div class="landing-intro">
-      <h1 class="landing-title">
-        {{ with .Site.Params.homeInfoParams.Title }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}
-      </h1>
       {{ with .Site.Params.homeInfoParams.Content }}
         <p class="landing-bio">{{ . }}</p>
       {{ end }}
-
-      <div class="landing-actions">
-        <a href="/posts/" class="landing-cta">Read the blog →</a>
-      </div>
-
-      {{ with .Site.Params.socialIcons }}
-        <div class="landing-social">
-          {{ range . }}
-            <a href="{{ .url }}" class="landing-social-link" target="_blank" rel="noopener noreferrer">{{ .name }}</a>
-          {{ end }}
-        </div>
-      {{ end }}
     </div>
   </div>
+
+  {{ $posts := first 3 (where .Site.RegularPages "Section" "posts") }}
+  {{ if $posts }}
+    <div class="latest-posts">
+      <h2 class="latest-posts-heading">Recent posts</h2>
+      <ul class="latest-posts-list">
+        {{ range $posts }}
+          <li class="latest-posts-item">
+            <a href="{{ .Permalink }}" class="latest-posts-link">
+              <span class="latest-posts-title">{{ .Title }}</span>
+              <span class="latest-posts-meta">
+                <time datetime="{{ .Date.Format "2006-01-02" }}">
+                  {{ .Date.Format ($.Site.Params.DateFormat | default "January 2, 2006") }}
+                </time>
+                {{ if .ReadingTime }}
+                  <span class="post-meta-sep">·</span>
+                  <span>{{ .ReadingTime }} min read</span>
+                {{ end }}
+              </span>
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+    </div>
+  {{ end }}
 {{ end }}
