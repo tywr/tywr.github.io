@@ -1,6 +1,6 @@
 baseURL: "https://tywr.github.io"
 languageCode: en-us
-title: tywr >
+title: tywr
 theme: ice
 
 caches:
@@ -22,13 +22,14 @@ minify:
 params:
   env: production
   title: Tanguy VIVIER
-  description: ""
   keywords: [Blog, Portfolio]
   author: Tanguy VIVIER
   images: ["https://avatars.githubusercontent.com/tywr"]
   DateFormat: "January 2, 2006"
   defaultTheme: auto
   disableThemeToggle: false
+  greeting: Tanguy Vivier – Knowledge Orbitals
+  description: Every idea has a mass. This is where they find their orbit — rough notes on things I've learned, things I want to learn, and things I just enjoy talking about.
 
   TocOpen: true
 
@@ -53,12 +54,6 @@ params:
     favicon16x16: "favicon-16x16.png"
     favicon32x32: "favicon-32x32.png"
     apple_touch_icon: "apple-touch-icon.png"
-
-  # home-info mode
-  homeInfoParams:
-    Title: "I feel like doing."
-    Content: |
-      A future reference for myself – to gather my thoughts and drop them into the void.
 
   socialIcons:
     - name: linkedin
@@ -90,9 +85,9 @@ outputs:
 
 menu:
   main:
-    - identifier: blog
-      name: Blog
-      url: /posts/
+    - identifier: notes
+      name: Notes
+      url: /notes/
       weight: 1
     - identifier: archives
       name: Archive
@@ -102,10 +97,6 @@ menu:
       name: Tags
       url: /tags/
       weight: 4
-    - identifier: about
-      name: About
-      url: /about/
-      weight: 5
 
 taxonomies:
   tag: tags

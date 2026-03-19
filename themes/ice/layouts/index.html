@@ -1,16 +1,16 @@
 {{ define "main" }}
   <div class="landing">
     <div class="landing-intro">
-      {{ with .Site.Params.homeInfoParams.Content }}
-        <p class="landing-bio">{{ . }}</p>
-      {{ end }}
+      <img src="/helios_sun.svg" alt="" class="landing-sun">
+      <h1 class="landing-title">{{ .Site.Params.greeting }}</h1>
+      <p class="landing-description">{{ .Site.Params.description }}</p>
     </div>
   </div>
 
-  {{ $posts := first 3 (where .Site.RegularPages "Section" "posts") }}
+  {{ $posts := first 3 (where .Site.RegularPages "Section" "notes") }}
   {{ if $posts }}
     <div class="latest-posts">
-      <h2 class="latest-posts-heading">Recent posts</h2>
+      <h2 class="latest-posts-heading">Recent notes</h2>
       <ul class="latest-posts-list">
         {{ range $posts }}
           <li class="latest-posts-item">

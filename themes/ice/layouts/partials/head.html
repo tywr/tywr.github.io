@@ -7,6 +7,7 @@
 {{ with .Site.Params.keywords }}<meta name="keywords" content="{{ delimit . ", " }}">{{ end }}
 
 <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+<link rel="icon" type="image/svg+xml" href="/helios_sun.svg">
 
 <!-- RSS -->
 {{ range .AlternativeOutputFormats -}}
@@ -18,15 +19,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- Dark mode: set theme before page renders to avoid flash -->
-<script>
-  (function() {
-    var stored = localStorage.getItem('theme');
-    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    var theme = stored || (prefersDark ? 'dark' : 'light');
-    document.documentElement.setAttribute('data-theme', theme);
-  })();
-</script>
+<!-- Always dark mode -->
+<script>document.documentElement.setAttribute('data-theme', 'dark');</script>
 
 {{- if .Params.math }}{{ partial "katex.html" . }}{{- end }}
 

@@ -1,35 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=SN+Pro:wght@200;300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lekton:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;300;400;500;600;700&display=swap');
+@import url(https://db.onlinewebfonts.com/c/b3ceb6cc6489265e27bb84b2a6b71b5a?family=Klartext+Mono+Bold);
+@font-face {
+    font-family: "Arcturus";
+    src: url("/Arcturus-Book.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
 
 /* ============================================================
-   CSS VARIABLES — LIGHT MODE (default)
+   CSS VARIABLES
 ============================================================ */
 :root {
-  --bg:           #f0f6fa;
-  --bg-alt:       #e4eef6;
-  --fg:           #1e2a38;
-  --fg-muted:     #81a1c1;
-  --title:        #5e81ac;
-  --accent:       #a093c7;
-  --border:       #96cfe0;
-  --link:         #5e81ac;
-  --link-hover:   #a093c7;
-  --tag-bg:       #ddeef8;
-  --tag-fg:       #5e81ac;
-  --header-bg:    #e4eef6;
-  --toggle-bg:    #343434;
-  --toggle-fg:    #eceff4;
-  --code-bg:      #0c0e12;
-  --code-fg:      #a3e2f5;
-  --inline-bg:    #ddeef8;
-  --inline-fg:    #5e81ac;
-}
-
-/* ============================================================
-   CSS VARIABLES — DARK MODE
-============================================================ */
-:root[data-theme="dark"] {
+  --font-mono: "Klartext Mono", monospace;
+  --font-code: "JetBrains Mono", monospace;
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Arcturus", sans-serif;
   --bg:           #161616;
   --bg-alt:       #262626;
   --fg:           #eceff4;
@@ -164,7 +153,6 @@ main {
    HEADER
 ============================================================ */
 .site-header {
-  font-family: 'Lekton', monospace;
   background-color: var(--header-bg);
   display: flex;
   align-items: center;
@@ -178,6 +166,7 @@ main {
 }
 
 .site-title {
+  font-family: var(--font-mono);
   font-weight: 700;
   font-size: 1.3rem;
   color: var(--title);
@@ -200,6 +189,7 @@ main {
 }
 
 .site-nav {
+  font-family: var(--font-sans);
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -225,34 +215,6 @@ main {
 .header-rss:hover {
   color: var(--accent);
 }
-
-/* Theme toggle button */
-.theme-toggle {
-  background: var(--toggle-bg);
-  border: 1px solid var(--border);
-  color: var(--toggle-fg);
-  cursor: pointer;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.9rem;
-  /* transition: background 0.2s ease, border-color 0.2s ease; */
-  flex-shrink: 0;
-}
-
-.theme-toggle:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
-.icon-sun { display: none; }
-.icon-moon { display: block; }
-
-:root[data-theme="dark"] .icon-sun { display: block; }
-:root[data-theme="dark"] .icon-moon { display: none; }
 
 /* ============================================================
    POST LIST (home & list pages)
@@ -280,7 +242,7 @@ main {
 }
 
 .post-list-title {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-serif);
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--title);
@@ -323,7 +285,8 @@ main {
   background: var(--tag-bg);
   color: var(--tag-fg);
   font-size: 0.75rem;
-  font-family: 'Lekton', sans-serif;
+  font-weight: 500;
+  font-family: var(--font-mono), sans-serif;
   padding: 0.15rem 0.55rem;
   transition: background 0.15s ease, color 0.15s ease;
   border-radius: 60px;
@@ -345,7 +308,9 @@ main {
 .page-title {
   font-size: 1.75rem;
   margin-bottom: 0.4rem;
+  font-family: var(--font-sans);
 }
+
 
 .page-description {
   color: var(--fg-muted);
@@ -360,6 +325,7 @@ main {
 }
 
 .post-title {
+  font-family: var(--font-serif);
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 0.75rem;
@@ -467,8 +433,9 @@ main {
   color: var(--tag-fg);
   border: 1px solid var(--border);
   padding: 0.3rem 0.8rem;
-  border-radius: 4px;
-  font-family: 'Inter', sans-serif;
+  border-radius: 60px;
+  font-family: var(--font-mono);
+  font-weight: 500;
   font-size: 0.875rem;
   transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
@@ -539,7 +506,7 @@ code {
   font-size: 0.875em;
   padding: 0.15em 0.4em;
   border-radius: 3px;
-  font-family: 'Lekton', monospace;
+  font-family: var(--font-code);
 }
 
 /* Plotly charts */
@@ -558,6 +525,9 @@ code {
 .highlight pre {
   margin: 0;
   border-radius: 6px;
+}
+
+.chroma {
 }
 
 .highlight .chroma {
@@ -766,7 +736,7 @@ code {
 .toc-title {
   padding: 0.5rem 1rem;
   display: block;
-  font-family: 'Lekton', monospace;
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -879,6 +849,7 @@ code {
 }
 
 .archive-post-title {
+  font-family: var(--font-serif);
   color: var(--fg);
   font-size: 0.95rem;
 }
@@ -930,17 +901,28 @@ code {
 /* ============================================================
    LANDING PAGE
 ============================================================ */
+.landing-sun {
+  display: block;
+  margin: 0 auto 1.5rem;
+}
+
 .landing {
-  /* padding-top: 2rem; */
-  /* padding-bottom: 2rem; */
+  padding-bottom: 2rem;
 }
 
 .landing-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  line-height: 1.15;
-  margin-bottom: 1.25rem;
-  color: var(--title);
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+  color: var(--fg);
+}
+
+.landing-description {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: var(--fg-muted);
+  line-height: 1.7;
 }
 
 .landing-bio {
@@ -948,6 +930,7 @@ code {
   color: var(--fg-muted);
   line-height: 1.7;
   margin-bottom: 2rem;
+  color: var(--fg);
 }
 
 .landing-actions {
@@ -977,7 +960,7 @@ code {
 }
 
 .landing-social-link {
-  font-family: 'Lekton', monospace;
+  font-family: var(--font-mono);
   font-size: 0.875rem;
   color: var(--fg-muted);
   text-transform: capitalize;
@@ -989,8 +972,12 @@ code {
 
 /* Latest posts on home page */
 .latest-posts-heading {
-    padding-bottom: 0.75rem;
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    color: var(--fg-muted);
+    margin-bottom: 0.75rem;
 }
+
 
 .latest-posts {
   padding-bottom: 3rem;
@@ -1027,7 +1014,7 @@ code {
   padding: 0rem;
   margin: 0rem;
   display: block;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-serif);
   font-weight: 500;
   font-size: 0.95rem;
   color: var(--fg);

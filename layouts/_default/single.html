@@ -20,6 +20,10 @@
               <span class="post-meta-sep">·</span>
               <span>{{ .ReadingTime }} min read</span>
             {{ end }}
+            {{ with .Params.audience }}
+              <span class="post-meta-sep">·</span>
+              <span>Targeted Audience: {{ . }}</span>
+            {{ end }}
           </div>
         {{ end }}
         {{ with .Params.tags }}
