@@ -38,7 +38,7 @@
   --inline-bg:    #181818;
   --inline-fg:    #eceff4;
   --sun-x: 50vw;
-  --sun-y: 40vh;
+  --sun-y: 50vh;
   --sun-r: 25vmin;
 }
 
@@ -909,6 +909,7 @@ code {
    LANDING PAGE
 ============================================================ */
 body.home {
+  overflow: hidden;
 }
 
 body.home .site-header {
@@ -924,16 +925,22 @@ body.home main {
   display: flex;
   flex-direction: row;
   align-items: center;
-  min-height: calc(100vh - 60px);
+  height: calc(100vh - 60px);
   position: relative;
+  /* Space between the two text columns = sun size + gaps */
+  gap: calc(var(--sun-r) + 4rem);
+  justify-content: center;
 }
 
 .landing-intro {
   text-align: left;
-  flex: 1;
-  padding-right: 2rem;
-  /* Push right edge to the left of the sun */
-  max-width: calc(var(--sun-x) - var(--sun-r) / 2 - 2rem);
+  padding-left: 3rem;
+  padding-right: 3rem;
+  position: fixed;
+  left: 3rem;
+  top: var(--sun-y);
+  transform: translateY(-50%);
+  max-width: calc(var(--sun-x) - var(--sun-r) / 2 - 5rem);
 }
 
 .landing-sun {
@@ -1042,6 +1049,8 @@ body.home main {
 
 /* Latest posts on home page */
 .latest-posts-heading {
+    padding: 0rem 3rem;
+    text-align: right;
     font-family: var(--font-sans);
     font-size: 1.5rem;
     color: var(--fg-muted);
@@ -1050,11 +1059,12 @@ body.home main {
 
 
 .latest-posts {
-  text-align: left;
-  flex: 1;
-  padding-left: 2rem;
-  /* Push left edge to the right of the sun */
-  margin-left: calc(var(--sun-x) + var(--sun-r) / 2 + 2rem);
+  text-align: right;
+  position: fixed;
+  right: 3rem;
+  top: var(--sun-y);
+  transform: translateY(-50%);
+  max-width: calc(100vw - var(--sun-x) - var(--sun-r) / 2 - 5rem);
 }
 
 @media (max-width: 768px) {
@@ -1075,8 +1085,7 @@ body.home main {
 }
 
 .latest-posts-item {
-  padding: 0rem 1rem;
-  margin: 0rem;
+  margin: 0;
   transition: background 0.15s ease;
   border: 1px solid transparent; /* reserves the space always */
   border-radius: 60px;
@@ -1088,7 +1097,7 @@ body.home main {
 
 .latest-posts-link {
   display: block;
-  padding: 0.25rem 1rem;
+  padding: 0.25rem 3rem;
   text-decoration: none;
   color: inherit;
 }

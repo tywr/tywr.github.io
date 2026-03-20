@@ -43,7 +43,7 @@ def orbit_path(cx, cy, radius, incline_deg, tilt_deg, view_dist, num_points=200)
     return " ".join(parts)
 
 
-def generate_orbits(width=1080, height=2040, offset_x=0, offset_y=-0.25):
+def generate_orbits(width=1080, height=2160, offset_x=0, offset_y=-0.25):
     # Center shifted by offset fractions (0 = center, 0.5 = edge)
     cx = width / 2 + width * offset_x
     cy = height / 2 + height * offset_y
