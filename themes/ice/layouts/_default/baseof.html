@@ -4,8 +4,8 @@
   {{ partial "head.html" . }}
 </head>
 <body{{ if .IsHome }} class="home"{{ end }}>
+  {{ partial "header.html" . }}
   <div class="site-wrapper">
-    {{ partial "header.html" . }}
     <main>
       {{ block "main" . }}{{ end }}
     </main>

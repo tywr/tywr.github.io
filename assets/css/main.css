@@ -20,18 +20,19 @@
   --font-sans: "Inter", sans-serif;
   --font-serif: "Arcturus", sans-serif;
   --bg:           #161616;
-  --bg-alt:       #26262650;
-  --fg:           #eceff4;
+  --bg-alt:       #262626;
+  --fg:           #e5e9f0;
   --fg-muted:     #d8dee9;
-  --title:        #A3E2F5;
-  --accent:       #88c0d0;
+  --title:        #eceff4;
+  --title-hover:  #d1f0fa;
+  --accent:       #a3e2f5;
   --border:       #262626;
   --link:         #81a1c1;
   --link-hover:   #5e81ac;
-  --tag-bg:       #262626;
-  --tag-fg:       #eceff4;
+  --tag-bg:       #26262675;
+  --tag-fg:       #e5e9f0;
   --header-bg:    #161616;
-  --toggle-bg:    #262626;
+  --toggle-bg:    #26262650;
   --toggle-fg:    #eceff4;
   --code-bg:      #262626;
   --code-fg:      #eceff4;
@@ -39,7 +40,9 @@
   --inline-fg:    #eceff4;
   --sun-x: 50vw;
   --sun-y: 50vh;
-  --sun-r: 25vmin;
+  --sun-r: 30vmin;
+  --x-padding: 1.5rem;
+  --y-padding: 0.3rem;
 }
 
 /* ============================================================
@@ -152,7 +155,6 @@ th {
 
 main {
   flex: 1;
-  padding: 2rem 3rem;
 }
 
 /* ============================================================
@@ -160,27 +162,37 @@ main {
 ============================================================ */
 .site-header {
   background-color: var(--header-bg);
+  width: 100%;
+  height: 60px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background-color 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: none;
+}
+
+.site-header.scrolled {
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.5);
+}
+
+.header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 60px;
-  position: sticky;
-  padding-right: 1rem;
-  top: 0;
-  z-index: 100;
-  transition: background-color 0.2s ease;
+  height: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 .site-title {
   font-family: var(--font-mono);
   font-weight: 700;
   font-size: 1.3rem;
-  color: var(--title);
+  color: var(--accent);
   align-self: stretch;      /* fill full height of the header */
   display: flex;
   align-items: center;      /* center text vertically */
-  padding-right: 1rem;
-  padding-left: 1rem;
+  padding: 0 var(--x-padding);
   border-radius: 60px;
 }
 
@@ -227,7 +239,7 @@ main {
 ============================================================ */
 .post-list {
   list-style: none;
-  padding: 0;
+  padding: 0 var(--x-padding);
   margin: 0;
 }
 
@@ -297,6 +309,7 @@ main {
   padding: 0.15rem 0.55rem;
   transition: background 0.15s ease, color 0.15s ease;
   border-radius: 60px;
+  padding: 0 0.8rem;
 }
 
 .tag:hover {
@@ -316,6 +329,7 @@ main {
   font-size: 1.75rem;
   margin-bottom: 0.4rem;
   font-family: var(--font-sans);
+  padding: 0 var(--x-padding);
 }
 
 
@@ -332,11 +346,13 @@ main {
 }
 
 .post-title {
+  color: var(--accent);
   font-family: var(--font-serif);
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 0.75rem;
   line-height: 1.25;
+  padding-top: 2rem;
 }
 
 .post-content {
@@ -384,20 +400,20 @@ main {
   gap: 1rem;
   margin-top: 3rem;
   padding-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .post-nav-link {
   display: flex;
   flex-direction: column;
   padding: 0.5rem 1.5rem;
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
+  /* background: var(--bg-alt); */
   border-radius: 60px;
   transition: border-color 0.15s ease;
 }
 
 .post-nav-link:hover {
-  border-color: var(--accent);
+    background: var(--toggle-bg);
 }
 
 .post-nav-link.next {
@@ -439,7 +455,7 @@ main {
   background: var(--tag-bg);
   color: var(--tag-fg);
   border: 1px solid var(--border);
-  padding: 0.3rem 0.8rem;
+  padding: var(--y-padding) var(--x-padding);
   border-radius: 60px;
   font-family: var(--font-mono);
   font-weight: 500;
@@ -700,11 +716,10 @@ code {
 ============================================================ */
 .post-layout {
   display: flex;
-  margin: -2rem -3rem;
 }
 
 .post-layout article {
-  padding: 2rem 3rem;
+  padding: 1rem 1rem;
 }
 
 .post-layout article {
@@ -777,7 +792,7 @@ code {
   transition: color 0.15s ease, border-color 0.15s ease;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem var(--x-padding);
   border-radius: 60px;
 }
 
@@ -822,11 +837,12 @@ code {
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+  padding: 0 var(--x-padding);
 }
 
 .archive-year-title {
   font-size: 1.1rem;
-  font-weight: 600;
+  font-family: var(--font-serif);
   color: var(--fg-muted);
   margin-bottom: 0.75rem;
   padding-bottom: 0.5rem;
@@ -851,7 +867,7 @@ code {
 .archive-post-date {
   font-size: 0.8rem;
   color: var(--fg-muted);
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   min-width: 4rem;
   flex-shrink: 0;
 }
@@ -859,7 +875,7 @@ code {
 .archive-post-title {
   font-family: var(--font-serif);
   color: var(--fg);
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .archive-post-title:hover {
@@ -928,15 +944,12 @@ body.home main {
   align-items: center;
   height: calc(100vh - 60px);
   position: relative;
-  /* Space between the two text columns = sun size + gaps */
-  gap: calc(var(--sun-r) + 4rem);
+  gap: 0rem;
   justify-content: center;
 }
 
 .landing-intro {
   text-align: left;
-  padding-left: 3rem;
-  padding-right: 3rem;
   position: fixed;
   left: 3rem;
   top: var(--sun-y);
@@ -1024,6 +1037,8 @@ body.home main {
   line-height: 1.4;
   margin-bottom: 0.75rem;
   color: var(--fg);
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 .landing-description {
@@ -1031,6 +1046,8 @@ body.home main {
   font-size: 1rem;
   color: var(--fg-muted);
   line-height: 1.7;
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 .landing-bio {
@@ -1131,7 +1148,7 @@ body.home main {
 }
 
 .latest-posts-item:hover {
-  background: var(--bg-alt);
+  background: var(--toggle-bg);
 }
 
 .latest-posts-link {
@@ -1142,19 +1159,19 @@ body.home main {
 }
 
 .latest-posts-title {
+  color: var(--title);
   padding: 0rem;
   margin: 0rem;
   display: block;
   font-family: var(--font-serif);
   font-weight: 500;
   font-size: 0.95rem;
-  color: var(--fg);
   margin-bottom: 0.0rem;
   transition: color 0.15s ease;
 }
 
 .latest-posts-item:hover .latest-posts-title {
-  color: var(--title);
+  color: var(--title-hover);
 }
 
 .latest-posts-meta {
