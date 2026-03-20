@@ -1,35 +1,34 @@
 {{ define "main" }}
+  <img src="/orbits.svg" alt="" class="landing-orbits">
   <div class="landing">
-    <img src="/orbits.svg" alt="" class="landing-orbits">
-    <img src="/icon.svg" alt="" class="landing-sun">
     <div class="landing-intro">
       <h1 class="landing-title">{{ .Site.Params.greeting }}</h1>
       <p class="landing-description">{{ .Site.Params.description }}</p>
     </div>
+    <img src="/icon.svg" alt="" class="landing-sun">
+    {{ $posts := first 3 (where .Site.RegularPages "Section" "notes") }}
+    {{ if $posts }}
+      <div class="latest-posts">
+        <h2 class="latest-posts-heading">Recent notes</h2>
+        <ul class="latest-posts-list">
+          {{ range $posts }}
+            <li class="latest-posts-item">
+              <a href="{{ .Permalink }}" class="latest-posts-link">
+                <span class="latest-posts-title">{{ .Title }}</span>
+                <span class="latest-posts-meta">
+                  <time datetime="{{ .Date.Format "2006-01-02" }}">
+                    {{ .Date.Format ($.Site.Params.DateFormat | default "January 2, 2006") }}
+                  </time>
+                  {{ if .ReadingTime }}
+                    <span class="post-meta-sep">·</span>
+                    <span>{{ .ReadingTime }} min read</span>
+                  {{ end }}
+                </span>
+              </a>
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+    {{ end }}
   </div>
-
-  {{ $posts := first 3 (where .Site.RegularPages "Section" "notes") }}
-  {{ if $posts }}
-    <div class="latest-posts">
-      <h2 class="latest-posts-heading">Recent notes</h2>
-      <ul class="latest-posts-list">
-        {{ range $posts }}
-          <li class="latest-posts-item">
-            <a href="{{ .Permalink }}" class="latest-posts-link">
-              <span class="latest-posts-title">{{ .Title }}</span>
-              <span class="latest-posts-meta">
-                <time datetime="{{ .Date.Format "2006-01-02" }}">
-                  {{ .Date.Format ($.Site.Params.DateFormat | default "January 2, 2006") }}
-                </time>
-                {{ if .ReadingTime }}
-                  <span class="post-meta-sep">·</span>
-                  <span>{{ .ReadingTime }} min read</span>
-                {{ end }}
-              </span>
-            </a>
-          </li>
-        {{ end }}
-      </ul>
-    </div>
-  {{ end }}
 {{ end }}

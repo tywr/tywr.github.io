@@ -922,19 +922,27 @@ body.home main {
 
 .landing {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  min-height: calc(100vh - 60px);
+  position: relative;
+}
+
+.landing-intro {
   text-align: left;
+  flex: 1;
+  padding-right: 2rem;
+  /* Push right edge to the left of the sun */
+  max-width: calc(var(--sun-x) - var(--sun-r) / 2 - 2rem);
 }
 
 .landing-sun {
-  display: block;
-  width: var(--sun-r);
-  height: var(--sun-r);
   position: fixed;
   top: var(--sun-y);
   left: var(--sun-x);
   transform: translate(-50%, -50%);
+  width: var(--sun-r);
+  height: var(--sun-r);
   pointer-events: none;
 }
 
@@ -946,6 +954,30 @@ body.home main {
   top: calc(var(--sun-y) - 50vw);
   z-index: -1;
   pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .landing {
+    flex-direction: column;
+    align-items: center;
+    min-height: auto;
+    padding: 2rem 0;
+  }
+
+  .landing-intro {
+    max-width: none;
+    padding-right: 0;
+    text-align: center;
+    order: 2;
+  }
+
+  .landing-sun {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    order: 1;
+  }
 }
 
 .landing-title {
@@ -1018,7 +1050,20 @@ body.home main {
 
 
 .latest-posts {
-  padding-bottom: 3rem;
+  text-align: left;
+  flex: 1;
+  padding-left: 2rem;
+  /* Push left edge to the right of the sun */
+  margin-left: calc(var(--sun-x) + var(--sun-r) / 2 + 2rem);
+}
+
+@media (max-width: 768px) {
+  .latest-posts {
+    order: 3;
+    text-align: center;
+    margin-left: 0;
+    padding-left: 0;
+  }
 }
 
 .latest-posts-list {
