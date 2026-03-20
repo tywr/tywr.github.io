@@ -7,7 +7,7 @@
 {{ with .Site.Params.keywords }}<meta name="keywords" content="{{ delimit . ", " }}">{{ end }}
 
 <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
-<link rel="icon" type="image/svg+xml" href="/helios_sun.svg">
+<link rel="icon" type="image/svg+xml" href="/icon.svg">
 
 <!-- RSS -->
 {{ range .AlternativeOutputFormats -}}

@@ -20,7 +20,7 @@
   --font-sans: "Inter", sans-serif;
   --font-serif: "Arcturus", sans-serif;
   --bg:           #161616;
-  --bg-alt:       #262626;
+  --bg-alt:       #26262650;
   --fg:           #eceff4;
   --fg-muted:     #d8dee9;
   --title:        #A3E2F5;
@@ -37,6 +37,9 @@
   --code-fg:      #eceff4;
   --inline-bg:    #181818;
   --inline-fg:    #eceff4;
+  --sun-x: 50vw;
+  --sun-y: 40vh;
+  --sun-r: 25vmin;
 }
 
 /* ============================================================
@@ -142,6 +145,9 @@ th {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
@@ -902,13 +908,44 @@ code {
 /* ============================================================
    LANDING PAGE
 ============================================================ */
-.landing-sun {
-  display: block;
-  margin: 0 auto 1.5rem;
+body.home {
+}
+
+body.home .site-header {
+  background-color: transparent;
+}
+
+body.home main {
+  display: flex;
+  flex-direction: column;
 }
 
 .landing {
-  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+}
+
+.landing-sun {
+  display: block;
+  width: var(--sun-r);
+  height: var(--sun-r);
+  position: fixed;
+  top: var(--sun-y);
+  left: var(--sun-x);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.landing-orbits {
+  position: fixed;
+  left: 0;
+  width: 100vw;
+  height: auto;
+  top: calc(var(--sun-y) - 50vw);
+  z-index: -1;
+  pointer-events: none;
 }
 
 .landing-title {

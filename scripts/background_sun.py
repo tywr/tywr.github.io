@@ -128,13 +128,13 @@ def lerp_colour(c1, c2, t):
     return f"#{r:02x}{g:02x}{b:02x}"
 
 
-def generate_sun_svg(width=256, height=256):
+def generate_sun_svg(width=256, height=256, scale=1.0, center=None):
     c1 = 0x88C0D0  # sun_yellow
     c2 = 0xECEFF4
     bg2 = 0x262626
 
-    cx, cy = width / 2, height / 2
-    max_radius = min(width, height) * 0.45
+    cx, cy = center if center else (width / 2, height / 2)
+    max_radius = min(width, height) * 0.45 * scale
 
     black_hole_offset_x = 0.2 * max_radius
     black_hole_offset_y = -0.2 * max_radius
