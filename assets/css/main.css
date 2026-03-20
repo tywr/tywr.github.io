@@ -201,6 +201,7 @@ main {
 }
 
 .header-right {
+  padding: 0 var(--x-padding);
   display: flex;
   align-items: center;
   gap: 1.25rem;
@@ -352,7 +353,7 @@ main {
   font-weight: 700;
   margin-bottom: 0.75rem;
   line-height: 1.25;
-  padding-top: 2rem;
+  padding-top: 1rem;
 }
 
 .post-content {
