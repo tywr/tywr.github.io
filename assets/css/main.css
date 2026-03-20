@@ -965,18 +965,22 @@ body.home main {
 }
 
 @media (max-width: 768px) {
-  .landing {
-    flex-direction: column;
-    align-items: center;
-    min-height: auto;
-    padding: 2rem 0;
+  body.home {
+    overflow: auto;
   }
 
-  .landing-intro {
-    max-width: none;
-    padding-right: 0;
-    text-align: center;
-    order: 2;
+  .landing {
+    text-align: left;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    gap: 2rem;
+    padding: 2rem 1rem;
+  }
+
+  .landing-orbits {
+    position: absolute;
+    top: -20vw;
   }
 
   .landing-sun {
@@ -984,8 +988,30 @@ body.home main {
     top: auto;
     left: auto;
     transform: none;
+    width: 30vw;
+    height: 30vw;
     order: 1;
   }
+
+  .landing-intro {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    max-width: none;
+    padding: 0 0rem;
+    text-align: center;
+    order: 2;
+  }
+
+  .landing-title {
+      text-align: left;
+  }
+
+  .landing-description {
+      text-align: left;
+  }
+
 }
 
 .landing-title {
@@ -1069,11 +1095,19 @@ body.home main {
 }
 
 @media (max-width: 768px) {
+  .latest-posts-heading {
+    text-align: left;
+    padding: 0rem 0rem;
+  }
+
   .latest-posts {
+    position: relative;
+    top: auto;
+    right: auto;
+    transform: none;
+    max-width: none;
+    text-align: left;
     order: 3;
-    text-align: center;
-    margin-left: 0;
-    padding-left: 0;
   }
 }
 
