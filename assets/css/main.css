@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Libertinus+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;300;400;500;600;700&display=swap');
 @import url(https://db.onlinewebfonts.com/c/b3ceb6cc6489265e27bb84b2a6b71b5a?family=Klartext+Mono+Bold);
 @font-face {
@@ -17,9 +16,8 @@
 :root {
   --font-mono: "Klartext Mono", monospace;
   --font-code: "JetBrains Mono", monospace;
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Rubik', system-ui, -apple-system, sans-serif;
   --font-serif: "Arcturus", serif;
-  --font-text: "Optima", "Libertinus Sans", sans-serif;
 
   --main-color: #A3E2F5;
   --main2-color: #96CDE0;
@@ -69,14 +67,14 @@ html {
 }
 
 body {
-  font-family: var(--font-text);
+  font-family: var(--font-sans);
   background-color: var(--bg);
   color: var(--fg);
   line-height: 1.7;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  font-weight: 400;
+  font-weight: 300;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
