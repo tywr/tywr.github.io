@@ -1184,6 +1184,9 @@ body.home main {
 }
 
 .latest-posts-meta {
+  font-family: var(--font-sans);
+  font-weight: 100;
+  color: var(--fg-muted);
   padding: 0rem;
   margin: 0rem;
   display: block;
