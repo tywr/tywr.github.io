@@ -3,13 +3,14 @@
   <div class="landing">
     <div class="landing-intro">
       <h1 class="landing-title">{{ .Site.Params.greeting }}</h1>
+      {{ with .Site.Params.subtitle }}<h2 class="landing-subtitle">{{ . }}</h2>{{ end }}
       <p class="landing-description">{{ .Site.Params.description }}</p>
     </div>
     <img src="/icon.svg" alt="" class="landing-sun">
     {{ $posts := first 3 (where .Site.RegularPages "Section" "notes") }}
     {{ if $posts }}
       <div class="latest-posts">
-        <h2 class="latest-posts-heading">Recent notes</h2>
+        <h2 class="latest-posts-heading">Notes</h2>
         <ul class="latest-posts-list">
           {{ range $posts }}
             <li class="latest-posts-item">
