@@ -10,7 +10,7 @@
     {{ $posts := first 3 (where .Site.RegularPages "Section" "notes") }}
     {{ if $posts }}
       <div class="latest-posts">
-        <h2 class="latest-posts-heading">Notes</h2>
+          <h2 class="latest-posts-heading"><a href="/notes/" class="latest-posts-heading-link">Notes →</a></h2>
         <ul class="latest-posts-list">
           {{ range $posts }}
             <li class="latest-posts-item">

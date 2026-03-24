@@ -1,13 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;300;400;500;600;700&display=swap');
-@import url(https://db.onlinewebfonts.com/c/b3ceb6cc6489265e27bb84b2a6b71b5a?family=Klartext+Mono+Bold);
 @font-face {
-    font-family: "Arcturus";
-    src: url("/Arcturus-Book.ttf") format("truetype");
+    font-family: "Klartext";
+    src: url("/KlartextMonoCode.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
-  }
+}
 @font-face {
     font-family: "Andromeda";
     src: url("/Andromeda-Alpha.ttf") format("truetype");
@@ -38,12 +37,11 @@
 }
 
 
-/* ============================================================
+/* ===========================================================
    CSS VARIABLES
 ============================================================ */
 :root {
-  --font-mono: "Klartext Mono", monospace;
-  --font-code: "JetBrains Mono", monospace;
+  --font-mono: "Klartext", "JetBrains Mono", monospace;
   --font-sans: 'Rubik', system-ui, -apple-system, sans-serif;
   --font-serif: "Andromeda", serif;
 
@@ -305,7 +303,7 @@ main {
 }
 
 .post-meta {
-  font-family: var(--font-sans);
+  font-family: var(--font-mono);
   font-weight: 100;
   color: var(--fg-muted);
   opacity: 0.75
@@ -524,7 +522,7 @@ main {
 }
 
 .home-posts-heading {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -562,13 +560,15 @@ code {
   font-size: 0.875em;
   padding: 0.15em 0.4em;
   border-radius: 3px;
-  font-family: var(--font-code);
+  font-family: var(--font-mono);
 }
 
 /* Plotly charts */
 .plotly-chart {
   width: 100%;
-  margin: 1.5em 0;
+  max-width: 800px;
+  aspect-ratio: 16 / 10;
+  margin: 1.5em auto;
 }
 
 /* Hugo chroma syntax highlight — force dark background */
@@ -776,18 +776,6 @@ code {
   padding-top: 2rem;
 }
 
-@media (max-width: 768px) {
-  .post-layout {
-    flex-direction: column;
-  }
-
-  .toc-sidebar {
-    width: 100%;
-    position: static;
-    max-height: none;
-  }
-}
-
 .toc-title {
   padding: 0.5rem 1rem;
   display: block;
@@ -851,10 +839,7 @@ code {
   font-size: 0.72rem;
 }
 
-/* ============================================================
-   RESPONSIVE
-============================================================ */
-@media (max-width: 600px) {
+@media (max-width: 1024px) {
   main { padding: 1rem 0.75rem; }
   .post-title { font-size: 1.5rem; }
   .site-header { height: 52px; }
@@ -1011,7 +996,7 @@ body.home main {
   pointer-events: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   body.home {
     overflow: auto;
   }
@@ -1055,13 +1040,6 @@ body.home main {
     order: 2;
   }
 
-  .landing-title {
-      text-align: left;
-  }
-
-  .landing-description {
-      text-align: left;
-  }
 
 }
 
@@ -1143,13 +1121,21 @@ body.home main {
 
 /* Latest posts on home page */
 .latest-posts-heading {
+    color: var(--fg);
     padding: 0rem 3rem;
     text-align: right;
     font-family: var(--font-sans);
     font-size: 1.5rem;
     font-weight: 500;
-    color: var(--fg);
     margin-bottom: 0.75rem;
+}
+
+.latest-posts-heading a {
+    color: var(--fg);
+}
+
+.latest-posts-heading a:hover {
+    color: var(--fg-bright);
 }
 
 
@@ -1162,7 +1148,7 @@ body.home main {
   max-width: calc(100vw - var(--sun-x) - var(--sun-r) / 2 - 5rem);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .latest-posts-heading {
     text-align: left;
     padding: 0rem 0rem;
@@ -1175,7 +1161,15 @@ body.home main {
     transform: none;
     max-width: none;
     text-align: left;
+    width: 100%;
     order: 3;
+    padding: 0rem 0rem;
+  }
+
+  .landing-description {
+      text-align: left;
+      padding-left: 0rem;
+      padding-right: 0rem;
   }
 }
 
@@ -1222,13 +1216,11 @@ body.home main {
 }
 
 .latest-posts-meta {
-  font-family: var(--font-sans);
-  font-weight: 100;
+  font-family: var(--font-mono);
+  font-weight: 400;
   color: var(--fg-muted);
   padding: 0rem;
   margin: 0rem;
   display: block;
   font-size: 0.8rem;
-  color: var(--fg-muted);
 }
-
