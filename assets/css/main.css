@@ -52,7 +52,7 @@
   --fg-bright:    #f7f9fa;
   --fg:           #e8eaeb;
   --fg-secondary: #afb1b3;
-  --fg-muted:     #6b7880;
+  --fg-muted:     #646669;
 
   --title:        var(--fg-bright);
   --title-hover:  var(--accent-color);
