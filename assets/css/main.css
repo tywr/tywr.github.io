@@ -1,12 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;300;400;500;600;700&display=swap');
-@font-face {
-    font-family: "Klartext";
-    src: url("/KlartextMonoCode.ttf") format("truetype");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;500;600;700&display=swap');
 @font-face {
     font-family: "Andromeda";
     src: url("/Andromeda-Alpha.ttf") format("truetype");
@@ -41,24 +35,35 @@
    CSS VARIABLES
 ============================================================ */
 :root {
-  --font-mono: "Klartext", "JetBrains Mono", monospace;
+  --font-mono: "JetBrains Mono", monospace;
   --font-sans: 'Rubik', system-ui, -apple-system, sans-serif;
   --font-serif: "Andromeda", serif;
 
-  --accent-color: #A3E2F5;
+  --accent-color: #ABEAFF;
+  --noir-0:       #f0f0f0;
+  --noir-1:       #e0e0e0;
+  --noir-2:       #d0d0d0;
+  --noir-3:       #b0b0b0;
+  --noir-4:       #a0a0a0;
+  --noir-5:       #909090;
+  --noir-6:       #808080;
+  --noir-7:       #606060;
+  --noir-8:       #505050;
+  --noir-9:       #404040;
 
   --bg:           #161616;
   --bg-alt:       #262626;
   --fg-bright:    #f7f9fa;
   --fg:           #e8eaeb;
-  --fg-secondary: #afb1b3;
+  --fg-secondary: #afafaf;
   --fg-muted:     #646669;
 
   --title:        var(--fg-bright);
   --title-hover:  var(--accent-color);
   --border:       #262626;
-  --link:         #81a1c1;
-  --link-hover:   #5e81ac;
+  --link:         var(--accent-color);
+  --link-hover:   var(--fg-bright);
+
   --tag-bg:       #40404075;
   --tag-fg:       #e5e9f0;
   --header-bg:    #161616;
@@ -68,6 +73,7 @@
   --code-fg:      #eceff4;
   --inline-bg:    #181818;
   --inline-fg:    #eceff4;
+
   --sun-x: 50vw;
   --sun-y: 50vh;
   --sun-r: 30vmin;
@@ -587,81 +593,82 @@ code {
 }
 
 .highlight .chroma {
+  border: none;
   background: var(--code-bg) !important;
-  color: #d8dee9 !important;
+  color: var(--noir-4) !important;
   -webkit-text-size-adjust: none;
 }
 
-/* Chroma syntax highlighting — nord */
-.chroma .err { color:#bf616a }
+/* Chroma syntax highlighting — monochrome (noir) */
+.chroma .err { color:var(--noir-3) }
 .chroma .lnlinks { outline:none;text-decoration:none;color:inherit }
 .chroma .lntd { vertical-align:top;padding:0;margin:0;border:0 }
 .chroma .lntable { border-spacing:0;padding:0;margin:0;border:0 }
-.chroma .hl { background-color:#424853 }
-.chroma .lnt { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74 }
-.chroma .ln { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74 }
+.chroma .hl { background-color:#363636 }
+.chroma .lnt { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:var(--noir-8) }
+.chroma .ln { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:var(--noir-8) }
 .chroma .line { display:flex }
-.chroma .k { color:#81a1c1;font-weight:bold }
-.chroma .kc { color:#81a1c1;font-weight:bold }
-.chroma .kd { color:#81a1c1;font-weight:bold }
-.chroma .kn { color:#81a1c1;font-weight:bold }
-.chroma .kp { color:#81a1c1 }
-.chroma .kr { color:#81a1c1;font-weight:bold }
-.chroma .kt { color:#81a1c1 }
-.chroma .na { color:#8fbcbb }
-.chroma .nc { color:#8fbcbb }
-.chroma .no { color:#8fbcbb }
-.chroma .nd { color:#d08770 }
-.chroma .ni { color:#d08770 }
-.chroma .ne { color:#bf616a }
-.chroma .nl { color:#8fbcbb }
-.chroma .nn { color:#8fbcbb }
-.chroma .py { color:#8fbcbb }
-.chroma .nt { color:#81a1c1 }
-.chroma .nb { color:#81a1c1 }
-.chroma .bp { color:#81a1c1 }
-.chroma .nf { color:#88c0d0 }
-.chroma .fm { color:#88c0d0 }
-.chroma .s { color:#a3be8c }
-.chroma .sa { color:#a3be8c }
-.chroma .sb { color:#a3be8c }
-.chroma .sc { color:#a3be8c }
-.chroma .dl { color:#a3be8c }
-.chroma .sd { color:#616e87 }
-.chroma .s2 { color:#a3be8c }
-.chroma .se { color:#ebcb8b }
-.chroma .sh { color:#a3be8c }
-.chroma .si { color:#a3be8c }
-.chroma .sx { color:#a3be8c }
-.chroma .sr { color:#ebcb8b }
-.chroma .s1 { color:#a3be8c }
-.chroma .ss { color:#a3be8c }
-.chroma .m { color:#b48ead }
-.chroma .mb { color:#b48ead }
-.chroma .mf { color:#b48ead }
-.chroma .mh { color:#b48ead }
-.chroma .mi { color:#b48ead }
-.chroma .il { color:#b48ead }
-.chroma .mo { color:#b48ead }
-.chroma .o { color:#81a1c1 }
-.chroma .ow { color:#81a1c1;font-weight:bold }
-.chroma .p { color:#eceff4 }
-.chroma .c { color:#616e87;font-style:italic }
-.chroma .ch { color:#616e87;font-style:italic }
-.chroma .cm { color:#616e87;font-style:italic }
-.chroma .c1 { color:#616e87;font-style:italic }
-.chroma .cs { color:#616e87;font-style:italic }
-.chroma .cp { color:#5e81ac;font-style:italic }
-.chroma .cpf { color:#5e81ac;font-style:italic }
-.chroma .gd { color:#bf616a }
+.chroma .k { color:var(--noir-5);font-weight:bold }
+.chroma .kc { color:var(--noir-5);font-weight:bold }
+.chroma .kd { color:var(--noir-5);font-weight:bold }
+.chroma .kn { color:var(--noir-5);font-weight:bold }
+.chroma .kp { color:var(--noir-5) }
+.chroma .kr { color:var(--noir-5);font-weight:bold }
+.chroma .kt { color:var(--noir-5) }
+.chroma .na { color:var(--noir-2) }
+.chroma .nc { color:var(--noir-2) }
+.chroma .no { color:var(--accent-color) }
+.chroma .nd { color:var(--noir-3) }
+.chroma .ni { color:var(--noir-3) }
+.chroma .ne { color:var(--noir-5) }
+.chroma .nl { color:var(--noir-2) }
+.chroma .nn { color:var(--noir-2) }
+.chroma .py { color:var(--noir-2) }
+.chroma .nt { color:var(--noir-6) }
+.chroma .nb { color:var(--noir-2) }
+.chroma .bp { color:var(--noir-2) }
+.chroma .nf { color:var(--noir-0) }
+.chroma .fm { color:var(--noir-0) }
+.chroma .s { color:var(--accent-color) }
+.chroma .sa { color:var(--accent-color) }
+.chroma .sb { color:var(--accent-color) }
+.chroma .sc { color:var(--accent-color) }
+.chroma .dl { color:var(--accent-color) }
+.chroma .sd { color:var(--noir-7);font-style:italic }
+.chroma .s2 { color:var(--accent-color) }
+.chroma .se { color:var(--noir-1) }
+.chroma .sh { color:var(--accent-color) }
+.chroma .si { color:var(--accent-color) }
+.chroma .sx { color:var(--accent-color) }
+.chroma .sr { color:var(--accent-color) }
+.chroma .s1 { color:var(--accent-color) }
+.chroma .ss { color:var(--accent-color) }
+.chroma .m { color:var(--accent-color) }
+.chroma .mb { color:var(--accent-color) }
+.chroma .mf { color:var(--accent-color) }
+.chroma .mh { color:var(--accent-color) }
+.chroma .mi { color:var(--accent-color) }
+.chroma .il { color:var(--accent-color) }
+.chroma .mo { color:var(--accent-color) }
+.chroma .o { color:var(--noir-6) }
+.chroma .ow { color:var(--noir-6);font-weight:bold }
+.chroma .p { color:var(--noir-6) }
+.chroma .c { color:var(--noir-7);font-style:italic }
+.chroma .ch { color:var(--noir-7);font-style:italic }
+.chroma .cm { color:var(--noir-7);font-style:italic }
+.chroma .c1 { color:var(--noir-7);font-style:italic }
+.chroma .cs { color:var(--noir-7);font-style:italic }
+.chroma .cp { color:var(--noir-6);font-style:italic }
+.chroma .cpf { color:var(--noir-6);font-style:italic }
+.chroma .gd { color:var(--noir-6) }
 .chroma .ge { font-style:italic }
-.chroma .gr { color:#bf616a }
-.chroma .gh { color:#88c0d0;font-weight:bold }
-.chroma .gi { color:#a3be8c }
-.chroma .gp { color:#4c566a;font-weight:bold }
+.chroma .gr { color:var(--noir-6) }
+.chroma .gh { color:var(--noir-0);font-weight:bold }
+.chroma .gi { color:var(--noir-2) }
+.chroma .gp { color:var(--noir-9);font-weight:bold }
 .chroma .gs { font-weight:bold }
-.chroma .gu { color:#88c0d0;font-weight:bold }
-.chroma .gt { color:#bf616a }
+.chroma .gu { color:var(--noir-2);font-weight:bold }
+.chroma .gt { color:var(--noir-5) }
 
 /* ============================================================
    FOOTER

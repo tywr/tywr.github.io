@@ -5,9 +5,11 @@
   (function() {
     var spec = {{ .Inner | safeJS }};
     function render() {
+      var style = getComputedStyle(document.documentElement);
       var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
       var layout = Object.assign({}, spec.layout || {});
-      var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim();
+      var bgColor = style.getPropertyValue('--bg').trim();
+      var accentColor = style.getPropertyValue('--accent-color').trim();
       layout.paper_bgcolor = bgColor;
       layout.plot_bgcolor = bgColor;
       layout.font = Object.assign({}, layout.font || {}, {
@@ -15,7 +17,17 @@
       });
       if (layout.xaxis) layout.xaxis.gridcolor = isDark ? '#3b4252' : '#d8dee9';
       if (layout.yaxis) layout.yaxis.gridcolor = isDark ? '#3b4252' : '#d8dee9';
-      Plotly.react('{{ $id }}', spec.data, layout, spec.config || { responsive: true });
+      var data = (spec.data || []).map(function(trace) {
+        var t = Object.assign({}, trace);
+        if (!trace.marker || !trace.marker.color) {
+          t.marker = Object.assign({}, t.marker || {}, { color: accentColor });
+        }
+        if (!trace.line || !trace.line.color) {
+          t.line = Object.assign({}, t.line || {}, { color: accentColor });
+        }
+        return t;
+      });
+      Plotly.react('{{ $id }}', data, layout, spec.config || { responsive: true });
     }
     if (window.Plotly) { render(); } else {
       document.addEventListener('plotly:loaded', render);

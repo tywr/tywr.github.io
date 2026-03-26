@@ -1,10 +1,10 @@
 ---
-title: "Modeling my favourite overdrive pedal using waveshapers and C++"
+title: "Modeling an overdrive pedal using waveshapers and C++"
 date: 2026-03-17
 summary: "I modeled and programmed a software recreation of my favourite bass-guitar overdrive pedal so I can use it as my personal live pedalboard."
 math: true
 plot: true
-tags: ["programming", "dsp", "juce", "c++", "bass-guitar"]
+tags: ["dsp", "juce", "c++", "bass-guitar"]
 audience: "Engineers, DSP Enthusiasts"
 ---
 

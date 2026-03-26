@@ -129,8 +129,8 @@ def lerp_colour(c1, c2, t):
 
 
 def generate_sun_svg(width=256, height=256, scale=1.0, center=None):
-    c1 = 0x88C0D0  # sun_yellow
-    c2 = 0xECEFF4
+    c1 = 0xabeaff
+    c2 = 0xe8eaeb
     bg2 = 0x262626
 
     cx, cy = center if center else (width / 2, height / 2)
