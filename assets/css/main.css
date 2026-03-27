@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;300;400;500;600;700&display=swap');
 
 @font-face {
     font-family: "Andromeda";
@@ -22,21 +23,6 @@
     font-style: normal;
     font-display: swap;
 }
-@font-face {
-    font-family: "Iosevka Web";
-    src: url("/IosevkaCustom-Regular.woff2") format("woff2");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: "Iosevka Web";
-    src: url("/IosevkaCustom-Bold.woff2") format("woff2");
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-}
-
 
 /* ===========================================================
    CSS VARIABLES
@@ -45,7 +31,7 @@
   font-synthesis: none;
   -webkit-font-smoothing: antialiased;
 
-  --font-mono: "Iosevka Web", monospace;
+  --font-mono: "JetBrains Mono", monospace;
   --font-sans: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
   --font-sans-display: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
   --font-serif-display: "Andromeda", serif;
