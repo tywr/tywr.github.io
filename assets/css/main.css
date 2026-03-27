@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;300;400;500;600;700&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono@latest/css/jetbrains-mono.css');
 
 @font-face {
     font-family: "Andromeda";
@@ -93,6 +93,7 @@ html {
 }
 
 body {
+  font-feature-settings: "cv01", "cv06", "cv07", "cv11", "cv18", "cv12", "cv14", "zero";
   font-family: var(--font-sans);
   background-color: var(--bg);
   color: var(--fg);
@@ -559,12 +560,12 @@ pre code {
 }
 
 code {
+  font-family: var(--font-mono);
   background: var(--inline-bg);
   color: var(--inline-fg);
   font-size: 0.875em;
   padding: 0.15em 0.4em;
   border-radius: 3px;
-  font-family: var(--font-mono);
 }
 
 /* Plotly charts */
