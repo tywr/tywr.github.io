@@ -23,6 +23,13 @@
     font-style: normal;
     font-display: swap;
 }
+@font-face {
+    font-family: "Kassiopea";
+    src: url("/Kassiopea-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
 
 /* ===========================================================
    CSS VARIABLES
@@ -31,7 +38,7 @@
   font-synthesis: none;
   -webkit-font-smoothing: antialiased;
 
-  --font-mono: "JetBrains Mono", monospace;
+  --font-mono: "Kassiopea", monospace;
   --font-sans: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
   --font-sans-display: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
   --font-serif-display: "Andromeda", serif;
