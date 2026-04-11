@@ -100,7 +100,7 @@ html {
 }
 
 body {
-  font-feature-settings: "cv01", "cv06", "cv07", "cv11", "cv18", "cv12", "cv14", "zero";
+  font-feature-settings: "ss01";
   font-family: var(--font-sans);
   background-color: var(--bg);
   color: var(--fg);
