@@ -17,15 +17,15 @@
     font-display: swap;
 }
 @font-face {
-    font-family: "Arcturus";
-    src: url("/Arcturus-Book.ttf") format("truetype");
+    font-family: "Kassiopea";
+    src: url("/Kassiopea-Regular.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
-    font-family: "Kassiopea";
-    src: url("/Kassiopea-Regular.ttf") format("truetype");
+    font-family: "Sentient";
+    src: url("/Sentient-Variable.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -42,7 +42,7 @@
   --font-sans: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
   --font-sans-display: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
   --font-serif-display: "Andromeda", serif;
-  --font-serif: "Arcturus", serif;
+  --font-serif: "New York Display", "Sentient", serif;
 
   --accent-color: #ABEAFF;
   --noir-0:       #f0f0f0;
