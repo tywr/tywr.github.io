@@ -17,8 +17,8 @@
     font-display: swap;
 }
 @font-face {
-    font-family: "Kassiopea";
-    src: url("/Kassiopea-Regular.ttf") format("truetype");
+    font-family: "Nordwand Mono";
+    src: url("NordwanMono-Regular/.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -38,11 +38,11 @@
   font-synthesis: none;
   -webkit-font-smoothing: antialiased;
 
-  --font-mono: "Kassiopea", monospace;
-  --font-sans: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
-  --font-sans-display: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  --font-mono: "Nordwand Mono", monospace;
+  --font-sans: sans-serif;
+  --font-sans-display: "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-serif-display: "Andromeda", serif;
-  --font-serif: "New York Display", "Sentient", serif;
+  --font-serif: "New York Display", serif;
 
   --accent-color: #ABEAFF;
   --noir-0:       #f0f0f0;
