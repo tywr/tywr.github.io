@@ -29,8 +29,8 @@ params:
   defaultTheme: auto
   disableThemeToggle: false
   greeting: Tanguy Vivier
-  subtitle: Knowledge Orbitals
-  description: Every idea has mass. This is where some find their orbits – rough notes on things I've learned, things I want to learn, and things I just enjoy talking about.
+  subtitle: Personal Blog
+  description: Rough notes on things I've learned, things I want to learn, and things I just enjoy talking about.
 
   TocOpen: true
 
