@@ -3,6 +3,7 @@
 
 <div class="specimen" style="--specimen-font: '{{ $font }}';">
   <div class="specimen-hero">Aa</div>
+  <a class="specimen-download" href="https://github.com/tywr/Nordwand-Mono/releases/latest">Download</a>
 
 
   <div class="specimen-row">
@@ -64,6 +65,7 @@ greeting<span class="c-op">=</span><span class="c-str">"Hello, world!"</span>
 <span class="c-fn">echo</span> <span class="c-str">"$greeting"</span></pre>
     </div>
   </div>
+
 </div>
 
 <style>
@@ -157,4 +159,16 @@ greeting<span class="c-op">=</span><span class="c-str">"Hello, world!"</span>
 .specimen-code .c-str { color: var(--accent-color); }
 .specimen-code .c-num { color: var(--accent-color); }
 .specimen-code .c-op  { color: var(--fg-muted); }
+.specimen-download {
+  align-self: center;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: .6rem 2rem;
+  border-radius: 999px;
+  background: var(--accent-color);
+  color: var(--bg);
+  text-decoration: none;
+  transition: opacity .15s ease;
+}
+.specimen-download:hover { opacity: .85; color: var(--bg); }
 </style>
