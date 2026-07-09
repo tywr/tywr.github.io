@@ -6,6 +6,8 @@
   <a class="specimen-download" href="https://github.com/tywr/Nordwand-Mono/releases/latest">Download</a>
 
 
+  <h2>Glyphs & Weights</h2>
+
   <div class="specimen-row">
   <div class="specimen-glyphs">
     <p>
@@ -28,41 +30,60 @@
   </div>
   </div>
 
+  <h2>Code Samples</h2>
+
   {{- $n := .Ordinal -}}
   <div class="specimen-code">
     <input type="radio" name="code-{{ $n }}" id="code-{{ $n }}-cpp" checked>
     <input type="radio" name="code-{{ $n }}" id="code-{{ $n }}-py">
-    <input type="radio" name="code-{{ $n }}" id="code-{{ $n }}-sh">
+    <input type="radio" name="code-{{ $n }}" id="code-{{ $n }}-rs">
     <div class="code-tabs">
       <label for="code-{{ $n }}-cpp">C++</label>
       <label for="code-{{ $n }}-py">Python</label>
-      <label for="code-{{ $n }}-sh">Bash</label>
+      <label for="code-{{ $n }}-rs">Rust</label>
     </div>
 
     <div class="code-panel panel-cpp">
-<pre><span class="c-pre">#include</span> <span class="c-str">&lt;iostream&gt;</span>
+<pre><span class="c-kw">enum class</span> <span class="c-fn">Weather</span> { Clear, Whiteout, Storm };
 
-<span class="c-kw">int</span> <span class="c-fn">main</span>() {
-    std::cout <span class="c-op">&lt;&lt;</span> <span class="c-str">"Hello, world!"</span> <span class="c-op">&lt;&lt;</span> std::endl;
-    <span class="c-kw">return</span> <span class="c-num">0</span>;
-}</pre>
+<span class="c-kw">struct</span> <span class="c-fn">Route</span> {
+    std::<span class="c-kw">string</span> name <span class="c-op">=</span> <span class="c-str">"Nordwand"</span>;
+    <span class="c-kw">int</span> pitches <span class="c-op">=</span> <span class="c-num">38</span>;
+    <span class="c-fn">Weather</span> conditions <span class="c-op">=</span> Weather::Whiteout;
+};
     </div>
 
     <div class="code-panel panel-py">
-<pre><span class="c-kw">def</span> <span class="c-fn">main</span>() <span class="c-op">-&gt;</span> <span class="c-kw">None</span>:
-    <span class="c-fn">print</span>(<span class="c-str">"Hello, world!"</span>)
+<pre><span class="c-kw">class</span> <span class="c-fn">Ascent</span>:
+    <span class="c-kw">def</span> <span class="c-fn">__init__</span>(self, peak: <span class="c-kw">str</span>, altitude_m: <span class="c-kw">int</span>):
+        self.peak <span class="c-op">=</span> peak
+        self.altitude_m <span class="c-op">=</span> altitude_m
+        self.temp_c <span class="c-op">=</span> <span class="c-num">-18.5</span>
+        self.wind_kph <span class="c-op">=</span> <span class="c-num">42</span>
 
+    <span class="c-kw">def</span> <span class="c-fn">windchill</span>(self) <span class="c-op">-&gt;</span> <span class="c-kw">float</span>:
+        <span class="c-kw">return</span> <span class="c-num">13.12</span> <span class="c-op">+</span> <span class="c-num">0.6215</span> <span class="c-op">*</span> self.temp_c <span class="c-op">\</span>
+            <span class="c-op">-</span> <span class="c-num">11.37</span> <span class="c-op">*</span> self.wind_kph <span class="c-op">**</span> <span class="c-num">0.16</span>
 
-<span class="c-kw">if</span> __name__ <span class="c-op">==</span> <span class="c-str">"__main__"</span>:
-    <span class="c-fn">main</span>()</pre>
+nordwand <span class="c-op">=</span> <span class="c-fn">Ascent</span>(<span class="c-str">"Eiger North Face"</span>, <span class="c-num">3970</span>)
+<span class="c-fn">print</span>(<span class="c-str">f"{nordwand.peak}: {nordwand.windchill():.1f}°C"</span>)</pre>
     </div>
 
-    <div class="code-panel panel-sh">
-<pre><span class="c-pre">#!/usr/bin/env bash</span>
-<span class="c-kw">set</span> <span class="c-op">-euo</span> pipefail
+    <div class="code-panel panel-rs">
+<pre><span class="c-kw">struct</span> <span class="c-fn">BaseCamp</span> {
+    altitude_m: <span class="c-kw">u32</span>,
+    temp_c: <span class="c-kw">i32</span>,
+    oxygen_pct: <span class="c-kw">f32</span>,
+}
 
-greeting<span class="c-op">=</span><span class="c-str">"Hello, world!"</span>
-<span class="c-fn">echo</span> <span class="c-str">"$greeting"</span></pre>
+<span class="c-kw">fn</span> <span class="c-fn">acclimatize</span>(camp: <span class="c-op">&amp;</span><span class="c-fn">BaseCamp</span>) <span class="c-op">-&gt;</span> <span class="c-kw">bool</span> {
+    camp.oxygen_pct <span class="c-op">&gt;</span> <span class="c-num">12.0</span> <span class="c-op">&amp;&amp;</span> camp.temp_c <span class="c-op">&gt;</span> <span class="c-num">-25</span>
+}
+
+<span class="c-kw">fn</span> <span class="c-fn">main</span>() {
+    <span class="c-kw">let</span> camp1 <span class="c-op">=</span> <span class="c-fn">BaseCamp</span> { altitude_m: <span class="c-num">5364</span>, temp_c: <span class="c-num">-22</span>, oxygen_pct: <span class="c-num">10.8</span> };
+    <span class="c-fn">println!</span>(<span class="c-str">"Ready to summit: {}"</span>, <span class="c-fn">acclimatize</span>(<span class="c-op">&amp;</span>camp1));
+}</pre>
     </div>
   </div>
 
@@ -108,7 +129,7 @@ greeting<span class="c-op">=</span><span class="c-str">"Hello, world!"</span>
   font-size: clamp(1rem, 4.5vw, 2rem); /* shrink so each row stays one centered line */
   letter-spacing: .1em;
   white-space: nowrap;
-  text-align: center;
+  text-align: left;
   overflow-x: auto;
 }
 .specimen-code {
@@ -146,13 +167,13 @@ greeting<span class="c-op">=</span><span class="c-str">"Hello, world!"</span>
 /* radio hack: show the panel and highlight the tab for the checked input */
 #code-{{ .Ordinal }}-cpp:checked ~ .code-tabs label[for="code-{{ .Ordinal }}-cpp"],
 #code-{{ .Ordinal }}-py:checked  ~ .code-tabs label[for="code-{{ .Ordinal }}-py"],
-#code-{{ .Ordinal }}-sh:checked  ~ .code-tabs label[for="code-{{ .Ordinal }}-sh"] {
+#code-{{ .Ordinal }}-rs:checked  ~ .code-tabs label[for="code-{{ .Ordinal }}-rs"] {
   color: var(--fg-bright);
   border-bottom-color: var(--accent-color);
 }
 #code-{{ .Ordinal }}-cpp:checked ~ .panel-cpp,
 #code-{{ .Ordinal }}-py:checked  ~ .panel-py,
-#code-{{ .Ordinal }}-sh:checked  ~ .panel-sh { display: block; }
+#code-{{ .Ordinal }}-rs:checked  ~ .panel-rs { display: block; }
 .specimen-code .c-pre { color: var(--fg-muted); }
 .specimen-code .c-kw  { color: var(--fg-bright); }
 .specimen-code .c-fn  { color: var(--fg-bright); font-weight: 700; }
