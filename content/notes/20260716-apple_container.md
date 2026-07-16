@@ -1,6 +1,6 @@
 ---
 title: "A minimal working setup for apple container"
-date: 2026-03-17
+date: 2026-07-16
 summary: "A minimal drop-in replacement for docker desktop on macos"
 tags: ["apple-container"]
 audience: "Software Engineers"
