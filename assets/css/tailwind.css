@@ -1,0 +1,62 @@
+@layer theme, base, components, utilities;
+
+/* Keep the existing reset in main.css while adopting Tailwind incrementally. */
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@plugin "@tailwindcss/typography";
+@source "hugo_stats.json";
+
+@theme inline {
+  --color-noir-0: var(--noir-0);
+  --color-noir-1: var(--noir-1);
+  --color-noir-2: var(--noir-2);
+  --color-noir-3: var(--noir-3);
+  --color-noir-4: var(--noir-4);
+  --color-noir-5: var(--noir-5);
+  --color-noir-6: var(--noir-6);
+  --color-noir-7: var(--noir-7);
+  --color-noir-8: var(--noir-8);
+  --color-noir-9: var(--noir-9);
+
+  --color-accent: var(--accent-color);
+
+  --color-bg: var(--bg);
+  --color-bg-alt: var(--bg-alt);
+  --color-fg-bright: var(--fg-bright);
+  --color-fg: var(--fg);
+  --color-fg-secondary: var(--fg-secondary);
+  --color-fg-muted: var(--fg-muted);
+  --color-tag-bg: var(--tag-bg);
+  --color-tag-fg: var(--tag-fg);
+  --color-toggle-bg: var(--toggle-bg);
+  --color-toggle-fg: var(--toggle-fg);
+  --color-code-bg: var(--code-bg);
+  --color-code-fg: var(--code-fg);
+  --color-inline-bg: var(--inline-bg);
+  --color-inline-fg: var(--inline-fg);
+  --color-title: var(--title);
+  --color-title-hover: var(--title-hover);
+  --color-border: var(--border);
+  --color-link: var(--link);
+  --color-link-hover: var(--link-hover);
+
+  --color-surface: var(--bg);
+  --color-surface-alt: var(--bg-alt);
+  --color-copy: var(--fg);
+  --color-copy-muted: var(--fg-secondary);
+
+  --font-mono: "Nordwand Mono", monospace;
+  --font-display: "Andromeda", serif;
+  --font-serif: serif;
+
+  --radius-sm: 8px;
+  --radius-md: 8px;
+  --radius-lg: 8px;
+  --radius-xl: 8px;
+}
+
+@layer base {
+  a {
+    text-decoration-line: none;
+  }
+}

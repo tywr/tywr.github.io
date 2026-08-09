@@ -1,0 +1,24 @@
+{
+  "name": "tywr.github.io",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Personal Website",
+  "scripts": {
+    "build": "hugo build --gc --minify",
+    "dev": "hugo server --buildDrafts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tywr/tywr.github.io.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tywr/tywr.github.io/issues"
+  },
+  "homepage": "https://github.com/tywr/tywr.github.io#readme",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "@tailwindcss/typography": "^0.5.20",
+    "tailwindcss": "^4.3.3"
+  }
+}

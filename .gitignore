@@ -2,3 +2,5 @@ public/*
 public
 public
 .DS_Store
+node_modules/
+hugo_stats.json

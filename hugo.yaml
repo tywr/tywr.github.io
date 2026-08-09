@@ -7,6 +7,23 @@ caches:
   images:
     dir: :cacheDir/images
 
+build:
+  buildStats:
+    enable: true
+  cachebusters:
+    - source: assets/notwatching/hugo_stats\.json
+      target: css
+    - source: (postcss|tailwind)\.config\.(js|cjs|mjs)
+      target: css
+
+module:
+  mounts:
+    - source: assets
+      target: assets
+    - source: hugo_stats.json
+      target: assets/notwatching/hugo_stats.json
+      disableWatch: true
+
 pagination:
   pagerSize: 10
 

@@ -1,22 +1,29 @@
 {{ define "main" }}
-  <img src="/orbits.svg" alt="" class="landing-orbits">
-  <div class="landing">
-    <div class="landing-intro">
-      <h1 class="landing-title">{{ .Site.Params.greeting }}</h1>
-      {{ with .Site.Params.subtitle }}<h2 class="landing-subtitle">{{ . }}</h2>{{ end }}
-      <p class="landing-description">{{ .Site.Params.description }}</p>
+  <div class="flex flex-col gap-6 px-10 lg:min-h-[calc(100dvh-4rem)] lg:grid lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:justify-center">
+    <div class="flex flex-col gap-px p-4">
+      <h1 class="m-2 font-display text-5xl">
+        {{ .Site.Params.greeting }}
+      </h1>
+      {{ with .Site.Params.subtitle }}
+      <h2 class="m-2 font-display text-accent text-4xl">
+        {{ . }}
+      </h2>
+      {{ end }}
+      <p class="m-2 text-xl">{{ .Site.Params.description }}</p>
     </div>
-    <img src="/icon.svg" alt="" class="landing-sun">
+    <img src="/icon.svg" class="h-auto w-[clamp(1rem,45hmin,20rem)] shrink-0 self-center">
     {{ $posts := first 3 (where .Site.RegularPages "Section" "notes") }}
     {{ if $posts }}
-      <div class="latest-posts">
-          <h2 class="latest-posts-heading"><a href="/notes/" class="latest-posts-heading-link">Notes →</a></h2>
-        <ul class="latest-posts-list">
+      <div class="latest-posts text-left lg:text-right">
+        <h2 class="latest-posts-heading">
+          <a class="text-fg p-4 hover:text-fg-bright" href="/notes/">Notes</a>
+        </h2>
+        <ul class="flex flex-col list-none gap-0">
           {{ range $posts }}
-            <li class="latest-posts-item">
-              <a href="{{ .Permalink }}" class="latest-posts-link">
-                <span class="latest-posts-title">{{ .Title }}</span>
-                <span class="latest-posts-meta">
+            <li class="rounded-lg hover:bg-toggle-bg p-4">
+              <a href="{{ .Permalink }}" class="flex flex-col gap-0">
+                <span class="font-serif text-base text-fg">{{ .Title }}</span>
+                <span class="font-mono text-fg-muted text-xs">
                   <time datetime="{{ .Date.Format "2006-01-02" }}">
                     {{ .Date.Format ($.Site.Params.DateFormat | default "January 2, 2006") }}
                   </time>
