@@ -1,31 +1,54 @@
 {{ define "main" }}
-  <article>
-    <header class="post-header">
-      <h1 class="post-title">{{ .Title }}</h1>
-      {{ if not .Params.hidemeta }}
-        <div class="post-meta">
-          <time datetime="{{ .Date.Format "2006-01-02" }}">
-            {{ .Date.Format (.Site.Params.DateFormat | default "January 2, 2006") }}
-          </time>
-          {{ if .ReadingTime }}
-            <span class="post-meta-sep">·</span>
-            <span>{{ .ReadingTime }} min read</span>
-          {{ end }}
-        </div>
-      {{ end }}
-      {{ with .Params.tags }}
-        <div class="post-tags" style="margin-top: 0.75rem;">
-          {{ range . }}
-            <a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="tag">{{ . }}</a>
-          {{ end }}
-        </div>
-      {{ end }}
-    </header>
+  <div class="post-layout">
+    {{ if and (not .Params.hidemeta) (.TableOfContents) (ne .TableOfContents "<nav id=\"TableOfContents\"></nav>") }}
+      <div class="mobile-toc" aria-hidden="true">
+        <label class="sr-only" for="mobile-toc-select">Section</label>
+        <select id="mobile-toc-select" aria-label="Jump to a section" disabled>
+          <option value="">{{ .Title }}</option>
+        </select>
+      </div>
 
-    <div class="post-content prose prose-invert max-w-none">
-      {{ .Content }}
-    </div>
-  </article>
+      <aside class="toc-sidebar" id="toc-sidebar">
+        <nav class="toc-nav" aria-label="Table of contents">
+          {{ .TableOfContents }}
+        </nav>
+      </aside>
+    {{ end }}
+
+    <article class="post-article">
+      <header class="post-header">
+        <h1 class="text-3xl">{{ .Title }}</h1>
+        {{ if and (not .Params.hidemeta) (ne .Section "projects") }}
+          <div class="post-meta font-mono text-sm text-fg-muted">
+            <time datetime="{{ .Date.Format "2006-01-02" }}">
+              {{ .Date.Format (.Site.Params.DateFormat | default "January 2, 2006") }}
+            </time>
+            {{ if .ReadingTime }}
+              <span class="post-meta-sep">·</span>
+              <span>{{ .ReadingTime }} min read</span>
+            {{ end }}
+            {{ with .Params.audience }}
+              <span class="post-meta-sep">·</span>
+              <span>Targeted Audience: {{ . }}</span>
+            {{ end }}
+          </div>
+        {{ end }}
+        {{ if ne .Section "projects" }}
+          {{ with .Params.tags }}
+            <div class="post-tags">
+              {{ range . }}
+                <a class="tag" href="{{ "/tags/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
+              {{ end }}
+            </div>
+          {{ end }}
+        {{ end }}
+      </header>
+
+      <div class="post-content prose prose-invert max-w-none">
+        {{ .Content }}
+      </div>
+    </article>
+  </div>
 
   {{ if or .PrevInSection .NextInSection }}
     <nav class="post-nav" aria-label="Post navigation">
@@ -46,5 +69,73 @@
         {{ end }}
       </div>
     </nav>
+  {{ end }}
+
+  {{ if and (not .Params.hidemeta) (.TableOfContents) (ne .TableOfContents "<nav id=\"TableOfContents\"></nav>") }}
+  <script>
+    (function() {
+      var toc = document.getElementById('toc-sidebar');
+      if (!toc) return;
+      var links = toc.querySelectorAll('a');
+      var mobileToc = document.querySelector('.mobile-toc');
+      var select = document.getElementById('mobile-toc-select');
+      var firstH2 = document.querySelector('.post-content h2[id]');
+      var headings = [];
+      links.forEach(function(link) {
+        var id = link.getAttribute('href');
+        if (id && id.startsWith('#')) {
+          var el = document.getElementById(id.slice(1));
+          if (el) {
+            headings.push({ el: el, link: link });
+            if (select) {
+              var option = document.createElement('option');
+              option.value = id;
+              option.textContent = link.textContent.trim();
+              select.appendChild(option);
+            }
+          }
+        }
+      });
+      if (!headings.length) return;
+
+      if (select) {
+        select.addEventListener('change', function() {
+          if (select.value) window.location.hash = select.value;
+        });
+      }
+
+      var ticking = false;
+      function update() {
+        var current = null;
+        for (var i = 0; i < headings.length; i++) {
+          if (headings[i].el.getBoundingClientRect().top <= 100) current = headings[i];
+        }
+        links.forEach(function(link) {
+          link.classList.remove('active');
+          link.removeAttribute('aria-current');
+        });
+        if (current) {
+          current.link.classList.add('active');
+          current.link.setAttribute('aria-current', 'location');
+        }
+        if (select) select.value = current ? current.link.getAttribute('href') : '';
+        if (mobileToc && firstH2) {
+          var showMobileToc = firstH2.getBoundingClientRect().top <= 100;
+          mobileToc.classList.toggle('is-visible', showMobileToc);
+          mobileToc.setAttribute('aria-hidden', String(!showMobileToc));
+          if (select) select.disabled = !showMobileToc;
+        }
+        ticking = false;
+      }
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          window.requestAnimationFrame(update);
+          ticking = true;
+        }
+      }, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    })();
+  </script>
   {{ end }}
 {{ end }}

@@ -56,7 +56,94 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   a {
     text-decoration-line: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  .tag {
+    @apply rounded-xl bg-toggle-bg px-3 py-1 font-mono text-xs text-tag-fg;
+    @apply hover:bg-tag-bg hover:text-toggle-fg;
+  }
+
+  .post-meta {
+    @apply pb-3;
+  }
+
+  .post-layout {
+    @apply mx-auto grid w-full max-w-full grid-cols-1 box-border px-4;
+    @apply lg:grid-cols-[minmax(0,1fr)_minmax(0,3fr)_minmax(0,1fr)] lg:gap-8 lg:px-6;
+  }
+
+  .post-article {
+    @apply min-w-0 lg:col-start-2 lg:row-start-1;
+  }
+
+  .mobile-toc {
+    width: 100vw;
+    @apply fixed inset-x-0 top-12;
+    @apply pointer-events-none z-40 box-border max-h-0 overflow-hidden bg-bg px-4 py-0 opacity-0;
+    @apply transition-[max-height,opacity,transform,padding] duration-200 lg:hidden;
+  }
+
+  .mobile-toc.is-visible {
+    @apply pointer-events-auto max-h-20 translate-y-0 py-2 opacity-100;
+  }
+
+  .mobile-toc select {
+    @apply w-full rounded-lg border-none bg-bg px-2 py-2 font-bold text-2xl text-fg-bright;
+  }
+
+  .toc-sidebar {
+    @apply hidden lg:col-start-1 lg:row-start-1 lg:block;
+  }
+
+  .toc-nav {
+    @apply sticky top-20 max-h-[calc(100dvh-6rem)] overflow-y-auto pr-4;
+  }
+
+  .toc-nav #TableOfContents ul {
+    @apply m-0 list-none p-0;
+  }
+
+  .toc-nav #TableOfContents a {
+    @apply block rounded-lg px-3 py-2 text-sm text-fg-muted;
+    @apply hover:bg-toggle-bg hover:text-fg-bright;
+  }
+
+  .toc-nav #TableOfContents ul ul a {
+    @apply pl-6 text-xs;
+  }
+
+  .toc-nav #TableOfContents ul ul ul a {
+    @apply pl-9;
+  }
+
+  .toc-nav #TableOfContents a.active {
+    @apply bg-toggle-bg text-toggle-fg;
+  }
+
+  .post-content {
+    @apply pt-6;
+  }
+
+  .post-content :is(h1, h2, h3, h4, h5, h6)[id] {
+    @apply scroll-mt-28;
+  }
+
+  .katex-display {
+    -webkit-overflow-scrolling: touch;
+    @apply box-border w-full max-w-full overflow-x-auto overflow-y-hidden;
   }
 }
