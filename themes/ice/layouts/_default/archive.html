@@ -1,0 +1,21 @@
+{{ define "main" }}
+<div class="list-page">
+    <h1 class="list-title">{{ .Title }}</h1>
+
+    <div class="list-entries">
+      {{ range ((where .Site.RegularPages "Section" "notes").GroupByDate "2006") }}
+      <div class="">
+        <h2 class="entry-title">{{ .Key }}</h2>
+        <ul class="list-entries-compact">
+          {{ range .Pages }}
+          <li class="entry-compact">
+            <time class="font-serif">{{ .Date.Format "Jan 02" }}</time>
+            <a class="entry-compact-desc" href="{{ .Permalink }}">{{ .Title }}</a>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+      {{ end }}
+    </div>
+</div>
+{{ end }}

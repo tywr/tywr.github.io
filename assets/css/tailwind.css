@@ -72,9 +72,66 @@
 }
 
 @layer components {
+  .site-header {
+    @apply fixed inset-x-0 top-0 z-50 bg-bg text-fg;
+  }
+
   .tag {
     @apply rounded-xl bg-toggle-bg px-3 py-1 font-mono text-xs text-tag-fg;
     @apply hover:bg-tag-bg hover:text-toggle-fg;
+  }
+
+  .tag-list {
+    @apply flex flex-row gap-3 py-2 list-none;
+  }
+
+  .tag-big {
+    @apply rounded-xl bg-toggle-bg px-3 py-1 font-mono text-base text-tag-fg;
+    @apply hover:bg-tag-bg hover:text-toggle-fg;
+  }
+
+  .tag-big-list {
+    @apply flex flex-row flex-wrap gap-3 py-4 list-none;
+  }
+
+  .meta {
+    @apply font-mono text-fg-muted text-xs;
+  }
+
+  .list-page {
+    @apply w-full md:w-3/4 mx-auto;
+  }
+
+  .list-title {
+    @apply text-4xl;
+  }
+
+  .list-entries {
+    @apply flex flex-col list-none p-0 gap-5;
+  }
+
+  .list-entries-compact {
+    @apply flex flex-col list-none p-0 gap-2;
+  }
+
+  .list-entry {
+    @apply flex flex-col gap-1;
+  }
+
+  .entry-title {
+    @apply font-serif text-xl text-fg hover:text-fg-bright border-b border-border py-1;
+  }
+
+  .entry-desc {
+    @apply text-base text-fg-secondary text-base m-0;
+  }
+
+  .entry-compact {
+    @apply flex gap-4;
+  }
+
+  .entry-compact-desc {
+    @apply text-base text-fg-secondary text-base m-0 hover:text-fg-bright;
   }
 
   .post-meta {
@@ -88,6 +145,10 @@
 
   .post-article {
     @apply min-w-0 lg:col-start-2 lg:row-start-1;
+  }
+
+  .post-title {
+    @apply text-3xl font-serif font-semibold;
   }
 
   .mobile-toc {
@@ -135,7 +196,7 @@
   }
 
   .post-content {
-    @apply pt-6;
+    @apply py-6;
   }
 
   .post-content :is(h1, h2, h3, h4, h5, h6)[id] {
@@ -145,5 +206,29 @@
   .katex-display {
     -webkit-overflow-scrolling: touch;
     @apply box-border w-full max-w-full overflow-x-auto overflow-y-hidden;
+  }
+
+  .post-nav {
+    @apply box-border my-10 flex w-full gap-4 px-20 lg:justify-between;
+  }
+
+  .post-nav-link {
+    @apply flex flex-col rounded-xl hover:bg-toggle-bg p-4 px-12 gap-1;
+  }
+
+  .post-nav-label {
+    @apply text-fg-muted text-xs uppercase;
+  }
+
+  .post-nav-title {
+    @apply text-fg-bright font-semibold text-base;
+  }
+
+  .prev {
+    @apply text-left;
+  }
+
+  .next {
+    @apply text-right;
   }
 }

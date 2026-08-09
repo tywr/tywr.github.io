@@ -1,0 +1,20 @@
+{{ define "main" }}
+<div class="list-page">
+  <h1 class="list-title">{{ .Title }}</h1>
+
+  <ul class="list-entries">
+    {{ range .Pages }}
+    <li class="list-entry">
+      <a href="{{ .Permalink }}" class="entry-title">{{ .Title }}</a>
+      {{ with .Summary }}
+      <p class="entry-desc">{{ . | plainify | truncate 500 }}</p>
+      {{ end }}
+    </li>
+    {{ else }}
+    <li><p>No projects yet.</p></li>
+    {{ end }}
+  </ul>
+</div>
+
+{{ template "_internal/pagination.html" . }} {{ end }}
+
