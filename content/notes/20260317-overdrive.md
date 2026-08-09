@@ -63,9 +63,7 @@ I_{DS,n} = \begin{cases}
 k_n \left[ (V_{GS} - V_{th,n}) V_{DS} - \dfrac{V_{DS}^2}{2} \right] & (V_{GS} > V_{th,n},\ V_{DS} < V_{GS} - V_{th,n}) \\
 \dfrac{k_n}{2} (V_{GS} - V_{th,n})^2 (1 + \delta \cdot V_{DS}) & (V_{GS} > V_{th,n},\ V_{DS} \geq V_{GS} - V_{th,n})
 \end{cases}
-$$
-
-$$
+\\[2em]
 I_{DS,p} = \begin{cases}
 0 & (V_{GS} \geq V_{th,p}) \\
 -k_p \left[ (V_{GS} - V_{th,p}) V_{DS} - \dfrac{V_{DS}^2}{2} \right] & (V_{GS} < V_{th,p},\ V_{DS} \geq V_{GS} - V_{th,p}) \\

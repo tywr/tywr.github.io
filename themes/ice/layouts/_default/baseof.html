@@ -3,9 +3,9 @@
 <head>
   {{ partial "head.html" . }}
 </head>
-<body{{ if .IsHome }} class="home"{{ end }}>
+<body class="bg-bg text-fg antialiased{{ if .IsHome }} home{{ end }}">
   {{ partial "header.html" . }}
-  <div class="site-wrapper">
+  <div class="site-wrapper min-h-dvh pt-14">
     <main>
       {{ block "main" . }}{{ end }}
     </main>

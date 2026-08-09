@@ -31,6 +31,18 @@ addEventListener('scroll',function(){
 
 {{- if .Params.math }}{{ partial "katex.html" . }}{{- end }}
 
+{{- with resources.Get "css/tailwind.css" }}
+  {{- $options := dict "minify" (not hugo.IsDevelopment) }}
+  {{- with . | css.TailwindCSS $options }}
+    {{- if hugo.IsDevelopment }}
+<link rel="stylesheet" href="{{ .RelPermalink }}">
+    {{- else }}
+      {{- with . | fingerprint }}
+<link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+      {{- end }}
+    {{- end }}
+  {{- end }}
+{{- end }}
 {{- $main := resources.Get "css/main.css" | fingerprint }}
 <link rel="stylesheet" href="{{ $main.RelPermalink }}" integrity="{{ $main.Data.Integrity }}">
 {{- $custom := resources.Get "css/custom.css" }}

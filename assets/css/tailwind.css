@@ -1,0 +1,248 @@
+@layer theme, base, components, utilities;
+
+/* Keep the existing reset in main.css while adopting Tailwind incrementally. */
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@plugin "@tailwindcss/typography";
+@source "hugo_stats.json";
+
+@theme inline {
+  --color-noir-0: var(--noir-0);
+  --color-noir-1: var(--noir-1);
+  --color-noir-2: var(--noir-2);
+  --color-noir-3: var(--noir-3);
+  --color-noir-4: var(--noir-4);
+  --color-noir-5: var(--noir-5);
+  --color-noir-6: var(--noir-6);
+  --color-noir-7: var(--noir-7);
+  --color-noir-8: var(--noir-8);
+  --color-noir-9: var(--noir-9);
+
+  --color-accent: var(--accent-color);
+
+  --color-bg: var(--bg);
+  --color-bg-alt: var(--bg-alt);
+  --color-fg-bright: var(--fg-bright);
+  --color-fg: var(--fg);
+  --color-fg-secondary: var(--fg-secondary);
+  --color-fg-muted: var(--fg-muted);
+  --color-tag-bg: var(--tag-bg);
+  --color-tag-fg: var(--tag-fg);
+  --color-toggle-bg: var(--toggle-bg);
+  --color-toggle-fg: var(--toggle-fg);
+  --color-code-bg: var(--code-bg);
+  --color-code-fg: var(--code-fg);
+  --color-inline-bg: var(--inline-bg);
+  --color-inline-fg: var(--inline-fg);
+  --color-title: var(--title);
+  --color-title-hover: var(--title-hover);
+  --color-border: var(--border);
+  --color-link: var(--link);
+  --color-link-hover: var(--link-hover);
+
+  --color-surface: var(--bg);
+  --color-surface-alt: var(--bg-alt);
+  --color-copy: var(--fg);
+  --color-copy-muted: var(--fg-secondary);
+
+  --font-mono: "Nordwand Mono", monospace;
+  --font-display: "Andromeda", serif;
+  --font-serif: serif;
+
+  --radius-sm: 8px;
+  --radius-md: 8px;
+  --radius-lg: 8px;
+  --radius-xl: 60px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  a {
+    text-decoration-line: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  .site-header {
+    @apply fixed inset-x-0 top-0 z-50 bg-bg text-fg;
+  }
+
+  .header-container {
+    @apply flex flex-wrap items-center justify-between px-8 py-2;
+    @apply shadow-none transition-shadow duration-300;
+  }
+
+  .site-header.scrolled .header-container {
+    @apply shadow-lg;
+  }
+
+
+  .header-title {
+    @apply font-mono font-bold text-2xl tracking-wide text-accent;
+  }
+
+  .tag {
+    @apply rounded-xl bg-toggle-bg px-3 py-1 font-mono text-xs text-tag-fg;
+    @apply hover:bg-tag-bg hover:text-toggle-fg;
+  }
+
+  .tag-list {
+    @apply flex flex-row gap-3 py-2 list-none;
+  }
+
+  .tag-big {
+    @apply rounded-xl bg-toggle-bg px-3 py-1 font-mono text-base text-tag-fg;
+    @apply hover:bg-tag-bg hover:text-toggle-fg;
+  }
+
+  .tag-big-list {
+    @apply flex flex-row flex-wrap gap-3 py-4 list-none;
+  }
+
+  .meta {
+    @apply font-mono text-fg-muted text-xs;
+  }
+
+  .list-page {
+    @apply w-full md:w-3/4 mx-auto;
+  }
+
+  .list-title {
+    @apply text-4xl;
+  }
+
+  .list-entries {
+    @apply flex flex-col list-none p-0 gap-5;
+  }
+
+  .list-entries-compact {
+    @apply flex flex-col list-none p-0 gap-2;
+  }
+
+  .list-entry {
+    @apply flex flex-col gap-1;
+  }
+
+  .entry-title {
+    @apply font-serif text-xl text-fg hover:text-fg-bright border-b border-border py-1;
+  }
+
+  .entry-desc {
+    @apply text-base text-fg-secondary text-base m-0;
+  }
+
+  .entry-compact {
+    @apply flex gap-4;
+  }
+
+  .entry-compact-desc {
+    @apply text-base text-fg-secondary text-base m-0 hover:text-fg-bright;
+  }
+
+  .post-meta {
+    @apply pb-3;
+  }
+
+  .post-layout {
+    @apply mx-auto grid w-full max-w-full grid-cols-1 box-border px-4;
+    @apply lg:grid-cols-[minmax(0,1fr)_minmax(0,3fr)_minmax(0,1fr)] lg:gap-8 lg:px-6;
+  }
+
+  .post-article {
+    @apply min-w-0 lg:col-start-2 lg:row-start-1;
+  }
+
+  .post-title {
+    @apply text-3xl font-serif font-semibold;
+  }
+
+  .mobile-toc {
+    width: 100vw;
+    @apply fixed inset-x-0 top-12;
+    @apply pointer-events-none z-40 box-border max-h-0 overflow-hidden bg-bg px-4 py-0 opacity-0;
+    @apply transition-[max-height,opacity,transform,padding] duration-200 lg:hidden;
+  }
+
+  .mobile-toc.is-visible {
+    @apply pointer-events-auto max-h-20 translate-y-0 py-2 opacity-100;
+  }
+
+  .mobile-toc select {
+    @apply w-full rounded-lg border-none bg-bg px-2 py-2 font-bold text-2xl text-fg-bright;
+  }
+
+  .toc-sidebar {
+    @apply hidden lg:col-start-1 lg:row-start-1 lg:block;
+  }
+
+  .toc-nav {
+    @apply sticky top-20 max-h-[calc(100dvh-6rem)] overflow-y-auto pr-4;
+  }
+
+  .toc-nav #TableOfContents ul {
+    @apply m-0 list-none p-0;
+  }
+
+  .toc-nav #TableOfContents a {
+    @apply block rounded-lg px-3 py-2 text-sm text-fg-muted;
+    @apply hover:bg-toggle-bg hover:text-fg-bright;
+  }
+
+  .toc-nav #TableOfContents ul ul a {
+    @apply pl-6 text-xs;
+  }
+
+  .toc-nav #TableOfContents ul ul ul a {
+    @apply pl-9;
+  }
+
+  .toc-nav #TableOfContents a.active {
+    @apply bg-toggle-bg text-toggle-fg;
+  }
+
+  .post-content {
+    @apply py-6;
+  }
+
+  .post-content :is(h1, h2, h3, h4, h5, h6)[id] {
+    @apply scroll-mt-28;
+  }
+
+  .katex-display {
+    -webkit-overflow-scrolling: touch;
+    @apply box-border w-full max-w-full overflow-x-auto overflow-y-hidden;
+  }
+
+  .post-nav {
+    @apply box-border my-10 flex w-full gap-4 px-20 lg:justify-between;
+  }
+
+  .post-nav-link {
+    @apply flex flex-col rounded-xl hover:bg-toggle-bg p-4 px-12 gap-1;
+  }
+
+  .post-nav-label {
+    @apply text-fg-muted text-xs uppercase;
+  }
+
+  .post-nav-title {
+    @apply text-fg-bright font-semibold text-base;
+  }
+
+  .prev {
+    @apply text-left;
+  }
+
+  .next {
+    @apply text-right;
+  }
+}
