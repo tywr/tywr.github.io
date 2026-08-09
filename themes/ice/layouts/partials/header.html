@@ -1,13 +1,13 @@
 <header class="site-header">
-  <div class="flex flex-wrap items-center justify-between px-4 py-2 shadow">
+  <div class="header-container">
     <a
-      class="font-mono font-bold text-2xl tracking-wide text-accent"
+      class="header-title"
       href="{{ .Site.BaseURL }}"
       >{{ .Site.Title }}</a
     >
     <div class="header-right">
       <nav
-        class="site-nav hidden items-center gap-4 px-4 py-2 md:flex"
+        class="site-nav hidden items-center gap-5 py-2 md:flex"
         aria-label="Main navigation"
       >
         {{ range .Site.Menus.main }}
