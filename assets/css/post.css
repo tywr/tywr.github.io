@@ -46,7 +46,7 @@
   }
 
   .post-content {
-    @apply py-6;
+    @apply py-6 text-justify;
   }
 
   .katex-display {

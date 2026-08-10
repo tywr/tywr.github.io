@@ -4,8 +4,8 @@
   }
 
   .index-container {
-    @apply flex w-full flex-col gap-6 px-2;
-    @apply lg:grid lg:min-h-0 lg:flex-1 lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:overflow-hidden lg:px-10;
+    @apply box-border flex w-full flex-col gap-6 px-2;
+    @apply lg:grid lg:min-h-0 lg:flex-1 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-center lg:overflow-hidden lg:px-10;
   }
 
   .index-left {
