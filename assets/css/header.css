@@ -1,6 +1,6 @@
 @layer components {
   .site-header {
-    @apply fixed inset-x-0 top-0 z-50 bg-bg text-fg;
+    @apply sticky top-0 z-50 shrink-0 bg-bg text-fg;
   }
 
   .header-container {
