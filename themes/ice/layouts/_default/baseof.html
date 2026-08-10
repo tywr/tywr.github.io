@@ -6,7 +6,7 @@
 <body class="flex min-h-dvh flex-col bg-bg text-fg antialiased{{ if .IsHome }} home{{ end }}">
   {{ partial "header.html" . }}
   <div class="site-wrapper flex min-h-0 flex-1 flex-col">
-    <main class="flex min-h-0 flex-1">
+    <main class="flex min-h-0 flex-1 flex-col">
       {{ block "main" . }}{{ end }}
     </main>
   </div>
