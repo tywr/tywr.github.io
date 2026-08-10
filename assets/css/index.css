@@ -1,0 +1,50 @@
+@layer components {
+  .index-container {
+    @apply flex flex-col gap-6 px-10;
+    @apply lg:min-h-[calc(100dvh-4rem)] lg:grid lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:justify-center;
+  }
+
+  .index-left {
+    @apply flex flex-col gap-px p-4;
+  }
+
+  .index-name {
+    @apply m-2 font-display text-5xl;
+  }
+
+  .index-title {
+    @apply m-2 font-display text-accent text-4xl;
+  }
+
+  .index-desc {
+    @apply font-sans m-2 text-xl;
+  }
+
+  .index-icon {
+    @apply h-auto w-[clamp(1rem,45hmin,20rem)] shrink-0 self-center;
+  }
+
+  .index-posts {
+    @apply text-left lg:text-right;
+  }
+
+  .index-post-title {
+    @apply text-fg p-4 hover:text-fg-bright text-2xl;
+  }
+
+  .index-post-list {
+    @apply flex flex-col list-none gap-0;
+  }
+
+  .index-post-layout {
+    @apply flex flex-col gap-0;
+  }
+
+  .index-post {
+    @apply rounded-lg hover:bg-toggle-bg p-4;
+  }
+
+  .index-post-entry-title {
+    @apply font-serif text-base text-fg;
+  }
+}

@@ -1,0 +1,19 @@
+@layer components {
+  .tag {
+    @apply rounded-xl bg-toggle-bg px-3 py-1 font-mono text-xs text-tag-fg;
+    @apply hover:bg-tag-bg hover:text-toggle-fg;
+  }
+
+  .tag-list {
+    @apply flex flex-row flex-wrap gap-3 py-2 list-none;
+  }
+
+  .tag-big {
+    @apply rounded-xl bg-toggle-bg px-3 py-1 font-mono text-base text-tag-fg;
+    @apply hover:bg-tag-bg hover:text-toggle-fg;
+  }
+
+  .tag-big-list {
+    @apply flex flex-row flex-wrap gap-3 py-4 list-none;
+  }
+}
