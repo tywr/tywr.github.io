@@ -49,6 +49,23 @@
     @apply py-6 text-justify;
   }
 
+  .post-content :is(h1, h2, h3, h4, h5, h6)[id] {
+    @apply scroll-mt-16;
+  }
+
+  .post-content code {
+      @apply rounded-lg bg-toggle-bg p-1;
+  }
+
+  .post-content highlight {
+      @apply rounded-lg;
+  }
+
+  .post-content code::before,
+  .post-content code::after {
+    content: none !important;
+  }
+
   .katex-display {
     -webkit-overflow-scrolling: touch;
     @apply box-border w-full max-w-full overflow-x-auto overflow-y-hidden;

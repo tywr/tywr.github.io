@@ -1,5 +1,5 @@
 ---
-title: "A poor man's data observability stack: raw → stats → qc"
+title: "A poor man's data observability stack: table, stats, qc"
 date: 2026-08-10
 summary: "Every table we produce automatically gets a stats file; assertions on those stats decide whether the data passes to the next step. This post describes the homemade framework that gave us data observability."
 math: true
@@ -7,8 +7,6 @@ plot: true
 tags: ["data-engineering", "data-observability"]
 audience: "Data Engineers, Software Engineers"
 ---
-
-# Implementing a small data observability framework
 
 Data observability can mean many different things depending on how you look at the problem. In general, it refers to the process of consistently monitoring the quality and reliability of a data product, but it can also mean looking at the performance of the pipeline that generates the data.
 
@@ -135,8 +133,8 @@ It's also a powerful debugging tool. Database writes can fail silently over time
 
 ## Wrapping up
 
-With three small templated classes—`raw` for the data, `stats` for the metrics, and `qc` for the assertions—we got systematic quality checks on every table, plus a free time series of metrics for monitoring.
+With three small templated classes – `raw` for the data, `stats` for the metrics, and `qc` for the assertions – we got systematic quality checks on every table, plus a free time series of metrics for monitoring.
 
-The main limitation is that assertion-based checks only catch what you thought to measure: a failure involving a metric you never aggregated will go undetected. A natural next step would be to run anomaly-detection algorithms on the `stats` time series itself—or to compare this homemade approach with other tools, such as Great Expectations.
+The main limitation is that assertion-based checks only catch what you thought to measure: a failure involving a metric you never aggregated will go undetected. A natural next step would be to run anomaly-detection algorithms on the `stats` time series itself – or to compare this homemade approach with other tools, such as Great Expectations.
 
 But as a starting point, this is a surprisingly effective way to observe your data.
