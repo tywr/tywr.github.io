@@ -1,29 +1,29 @@
 {{ define "main" }}
-  <div class="flex flex-col gap-6 px-10 lg:min-h-[calc(100dvh-4rem)] lg:grid lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:justify-center">
-    <div class="flex flex-col gap-px p-4">
-      <h1 class="m-2 font-display text-5xl">
+  <div class="index-container">
+    <div class="index-left">
+      <h1 class="index-name">
         {{ .Site.Params.greeting }}
       </h1>
       {{ with .Site.Params.subtitle }}
-      <h2 class="m-2 font-display text-accent text-4xl">
+      <h2 class="index-title">
         {{ . }}
       </h2>
       {{ end }}
-      <p class="m-2 text-xl">{{ .Site.Params.description }}</p>
+      <p class="index-desc">{{ .Site.Params.description }}</p>
     </div>
-    <img src="/icon.svg" class="h-auto w-[clamp(1rem,45hmin,20rem)] shrink-0 self-center">
+    <img src="/icon.svg" class="index-icon">
     {{ $posts := first 3 (where .Site.RegularPages "Section" "notes") }}
     {{ if $posts }}
-      <div class="latest-posts text-left lg:text-right">
-        <h2 class="latest-posts-heading">
-          <a class="text-fg p-4 hover:text-fg-bright" href="/notes/">Notes</a>
+      <div class="index-posts">
+        <h2 class="title">
+          <a class="index-post-title" href="/notes/">Notes</a>
         </h2>
-        <ul class="flex flex-col list-none gap-0">
+        <ul class="index-post-list">
           {{ range $posts }}
-            <li class="rounded-lg hover:bg-toggle-bg p-4">
-              <a href="{{ .Permalink }}" class="flex flex-col gap-0">
-                <span class="font-serif text-base text-fg">{{ .Title }}</span>
-                <span class="font-mono text-fg-muted text-xs">
+            <li class="index-post">
+              <a href="{{ .Permalink }}" class="index-post-layout">
+                <span class="index-post-entry-title">{{ .Title }}</span>
+                <span class="meta">
                   <time datetime="{{ .Date.Format "2006-01-02" }}">
                     {{ .Date.Format ($.Site.Params.DateFormat | default "January 2, 2006") }}
                   </time>
