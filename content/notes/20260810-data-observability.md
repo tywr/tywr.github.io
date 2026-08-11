@@ -29,7 +29,7 @@ db -->|raw v2| raw_table_2 -->|agg| stats_table_2 -->|qc| catalog
 db -->|raw v3| raw_table_3 -->|agg| stats_table_3 -->|qc| catalog
 ```
 
-Put simply, we compute an `agg` file containing derived metrics for each table, then use those metrics to determine whether the data can move to the next step—in our case, a data catalog.
+Put simply, we compute an `agg` file containing derived metrics for each table, then use those metrics to determine whether the data can move to the next step – in our case, a data catalog.
 
 ## Step 1: The raw framework
 
