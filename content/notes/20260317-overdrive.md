@@ -4,7 +4,7 @@ date: 2026-03-17
 summary: "I modeled and programmed a software recreation of my favourite bass-guitar overdrive pedal so I can use it as my personal live pedalboard."
 math: true
 plot: true
-tags: ["dsp", "juce", "c++", "bass-guitar"]
+tags: ["dsp", "juce", "c++", "bass-guitar", "orbital-bass-engine"]
 audience: "Engineers, DSP Enthusiasts"
 ---
 
