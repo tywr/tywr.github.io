@@ -1,0 +1,44 @@
+:root {
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+
+  --accent-color: #abeaff;
+  --noir-0: #f0f0f0;
+  --noir-1: #e0e0e0;
+  --noir-2: #d0d0d0;
+  --noir-3: #b0b0b0;
+  --noir-4: #a0a0a0;
+  --noir-5: #909090;
+  --noir-6: #808080;
+  --noir-7: #606060;
+  --noir-8: #505050;
+  --noir-9: #404040;
+
+  --bg: #121212;
+  --bg-alt: #181818;
+  --fg-bright: #eeeeee;
+  --fg: #cccccc;
+  --fg-secondary: #aaaaaa;
+  --fg-muted: #606060;
+  --tag-bg: #40404075;
+  --tag-fg: var(--fg);
+  --toggle-bg: #40404050;
+  --toggle-fg: #eeeeee;
+  --code-bg: #181818;
+  --code-fg: #cccccc;
+  --inline-bg: #181818;
+  --inline-fg: #eceff4;
+
+  --title: var(--fg-bright);
+  --title-hover: var(--accent-color);
+  --border: #262626;
+  --link: var(--accent-color);
+  --link-hover: var(--fg-bright);
+
+  --sun-x: 50vw;
+  --sun-y: 50vh;
+  --sun-r: 30vmin;
+  --x-padding: 1.5rem;
+  --y-padding: 0.3rem;
+
+}

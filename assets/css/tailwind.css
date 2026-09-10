@@ -1,8 +1,10 @@
 @layer theme, base, components, utilities;
 
-/* Keep the existing reset in main.css while adopting Tailwind incrementally. */
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities);
+@import "./assets/css/fonts.css" layer(components);
+@import "./assets/css/theme.css" layer(components);
+@import "./assets/css/chroma.css" layer(components);
 @import "./assets/css/header.css" layer(components);
 @import "./assets/css/tags.css" layer(components);
 @import "./assets/css/index.css" layer(components);
@@ -49,9 +51,20 @@
   --color-copy: var(--fg);
   --color-copy-muted: var(--fg-secondary);
 
-  --font-mono: "Nordwand Mono", monospace;
-  --font-display: "Andromeda", serif;
-  --font-serif: serif;
+  --font-mono:
+    "Nordwand Mono", "SFMono-Regular", "SF Mono", "Nordwand Mono", ui-monospace,
+    Menlo, Monaco, monospace;
+  --font-sans:
+    "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  --font-sans-display:
+    "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  --font-display:
+    "Andromeda", "New York", "New York Large", "New York Medium", Andromeda,
+    ui-serif, Georgia, serif;
+  --font-serif:
+    "New York", "New York Small", "New York Medium", ui-serif, Georgia, serif;
 
   --radius-sm: 8px;
   --radius-md: 8px;

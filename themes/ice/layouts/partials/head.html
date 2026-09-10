@@ -14,11 +14,6 @@
   <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | absURL }}" title="{{ $.Site.Title }}">
 {{ end -}}
 
-<!-- Google Fonts: Inter -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
 <!-- Always dark mode -->
 <script>document.documentElement.setAttribute('data-theme', 'dark');</script>
 
@@ -43,8 +38,6 @@ addEventListener('scroll',function(){
     {{- end }}
   {{- end }}
 {{- end }}
-{{- $main := resources.Get "css/main.css" | fingerprint }}
-<link rel="stylesheet" href="{{ $main.RelPermalink }}" integrity="{{ $main.Data.Integrity }}">
 {{- $custom := resources.Get "css/custom.css" }}
 {{- if $custom }}
 <link rel="stylesheet" href="{{ $custom.RelPermalink }}">
