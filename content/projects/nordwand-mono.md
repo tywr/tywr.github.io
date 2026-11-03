@@ -1,7 +1,7 @@
 ---
 title: "Nordwand Mono"
 date: 2026-07-08
-summary: "A programming font for programmers and wanderers"
+summary: "A programming font for programmers"
 tags: ["typeface", "typography"]
 layout: "redirect"
 redirect: "https://tywr.github.io/Nordwand-Mono/"
